@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/23 22:50:20 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/23 23:09:01 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		size_line(char **line, char *keep, int ret_read)
 	size = BUFFER_SIZE;
 	if (ret_read == 0)
 		size = 0;
-	if (ret_read >= 1)
+	if (ret_read == 1)
 	{
 		while (size == BUFFER_SIZE)
 		{
