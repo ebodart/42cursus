@@ -15,7 +15,7 @@ Toutes les fonctions ont été codées sauf la dernière fonction "*ft_lstmap*" 
 Le but était de coder une fonction qui renvoit une ligne terminée par un retour à la ligne lue depuis un descripteur de fichier. 
 
 J'ai codé cette fonction de deux manières différentes:
-  - GNL_sans_malloc: J'ai d'abord coder la fonction sans utiliser d'allocation dynamique. Cette fonction a été corrigée et réussie.
+  - GNL_sans_malloc: J'ai d'abord codé ma fonction sans utiliser d'allocation dynamique. Cette fonction a été corrigée et réussie.
 
   - GNL_avec_malloc: J'ai ensuite modifié ma fonction pour utiliser "malloc" afin d'allouer de la mémoire. Cette fonction n'a pas été corrigée.
 
