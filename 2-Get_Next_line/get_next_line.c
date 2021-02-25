@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 16:07:25 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 17:24:36 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		next_line(char *keep, int fd, char **line)
 {
 	int		i;
 	char	*tmp;
-	int 	ret_read;
+	int		ret_read;
 
 	i = 0;
 	if ((ret_read = read_line(keep, fd)) > 0)
