@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:22:44 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 12:24:15 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:42:40 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlen(const char *s)
 ** ou bien à mettre à 0 la variable static
 */
 
-void	init_keep(char *keep, int i)
+void	init_keep(char *keep, long int i)
 {
 	char	*tmp;
 	int		j;

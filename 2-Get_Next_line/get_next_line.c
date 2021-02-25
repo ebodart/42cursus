@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 12:25:47 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:47:02 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		read_line(char *keep, int fd)
 ** en tenant compte de la taille à allouer gr^ace à la fonction fill_line
 */
 
-int		fill_line(char **line, int size, char *keep, int ret_read)
+int		fill_line(char **line, long int size, char *keep, int ret_read)
 {
 	int i;
 
@@ -78,13 +78,13 @@ int		fill_line(char **line, int size, char *keep, int ret_read)
 int		size_line(char **line, char *keep, int ret_read)
 {
 	int			i;
-	int			size;
+	long int	size;
 
 	i = 0;
 	size = BUFFER_SIZE;
 	if (ret_read == 0)
 		size = 0;
-	if (ret_read == 1)
+	if (ret_read >= 1)
 	{
 		while (size == BUFFER_SIZE)
 		{
