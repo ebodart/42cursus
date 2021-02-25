@@ -6,41 +6,11 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 12:53:16 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 16:07:25 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/*
-** Sert à lire une ligne de la taille du buffer
-*/
-
-int		read_line(char *keep, int fd)
-{
-	int ret_read;
-	int i;
-
-	i = 0;
-	if ((ret_read = read(fd, keep, BUFFER_SIZE)) == -1)
-		return (-1);
-	else if (ret_read == 0)
-	{
-		keep[0] = -1;
-		return (0);
-	}
-	else
-	{
-		keep[ret_read] = '\0';
-		while (keep[i])
-		{
-			if (keep[i] == '\n')
-				return (1);
-			i++;
-		}
-		return (2);
-	}
-}
 
 /*
 ** Fonction qui sert à remplir line par ce qu'on a trouvé dans keep
@@ -133,14 +103,35 @@ char	*join_keep_line(char *tmp, char *line, int i)
 	return (new_line);
 }
 
+/*
+** Fonction qui sert à lire les prochaines lignes
+*/
+
+int		next_line(char *keep, int fd, char **line)
+{
+	int		i;
+	char	*tmp;
+	int 	ret_read;
+
+	i = 0;
+	if ((ret_read = read_line(keep, fd)) > 0)
+	{
+		tmp = *line;
+		size_line(line, keep, ret_read);
+		if (!(*line = join_keep_line(tmp, *line, i)))
+		{
+			free(keep);
+			return (-1);
+		}
+	}
+	return (ret_read);
+}
+
 int		get_next_line(int fd, char **line)
 {
 	static char	*keep;
 	int			ret_read;
-	char		*tmp;
-	int			i;
 
-	i = 0;
 	ret_read = 0;
 	if (!line || (*line = NULL) || BUFFER_SIZE < 1 || fd < 0)
 		return (-1);
@@ -152,16 +143,7 @@ int		get_next_line(int fd, char **line)
 	else if ((ret_read = read_line(keep, fd)) >= 0)
 		ret_read = size_line(line, keep, ret_read);
 	while (ret_read > 1)
-		if ((ret_read = read_line(keep, fd)) > 0)
-		{
-			tmp = *line;
-			size_line(line, keep, ret_read);
-			if (!(*line = join_keep_line(tmp, *line, i)))
-			{
-				free(keep);
-				return (-1);
-			}
-		}
+		ret_read = next_line(keep, fd, line);
 	if (ret_read < 1)
 	{
 		free(keep);
