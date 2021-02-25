@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 10:36:00 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:23:14 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,6 @@ int		get_next_line(int fd, char **line)
 		}
 	}
 	if (ret_read == 0)
-		keep[ret_read] = '\0';
+		keep[fd][ret_read] = '\0';
 	return (ret_read);
 }

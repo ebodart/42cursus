@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:22:44 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/23 16:47:01 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:24:15 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,22 @@ void	init_keep(char *keep, int i)
 			j++;
 		}
 	}
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*mem;
+	size_t	i;
+	char	*str;
+
+	if (!(mem = malloc(size * nmemb)))
+		return (NULL);
+	i = 0;
+	str = (char *)mem;
+	while (i < nmemb)
+	{
+		str[i] = 0;
+		i++;
+	}
+	return (mem);
 }

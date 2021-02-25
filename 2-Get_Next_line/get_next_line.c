@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/02/25 10:33:15 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:25:47 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,29 +135,37 @@ char	*join_keep_line(char *tmp, char *line, int i)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	keep[BUFFER_SIZE + 1];
+	static char	*keep;
 	int			ret_read;
 	char		*tmp;
 	int			i;
 
 	i = 0;
+	ret_read = 0;
 	if (!line || (*line = NULL) || BUFFER_SIZE < 1 || fd < 0)
 		return (-1);
+	if (keep == NULL)
+		if (!(keep = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
+			return (-1);
 	if (*keep)
 		ret_read = size_line(line, keep, 1);
 	else if ((ret_read = read_line(keep, fd)) >= 0)
 		ret_read = size_line(line, keep, ret_read);
 	while (ret_read > 1)
-	{
 		if ((ret_read = read_line(keep, fd)) > 0)
 		{
 			tmp = *line;
 			size_line(line, keep, ret_read);
 			if (!(*line = join_keep_line(tmp, *line, i)))
+			{
+				free(keep);
 				return (-1);
+			}
 		}
+	if (ret_read < 1)
+	{
+		free(keep);
+		keep = NULL;
 	}
-	if (ret_read == 0)
-			keep[ret_read] = '\0';
 	return (ret_read);
 }
