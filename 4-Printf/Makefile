@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 21:13:42 by ebodart           #+#    #+#              #
-#    Updated: 2021/05/20 18:41:43 by ebodart          ###   ########.fr        #
+#    Updated: 2021/05/21 12:06:48 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCNAME		= ft_printf.c \
 				ft_fill_print.c \
 				ft_conv_char.c \
 				ft_conv_string.c \
+				ft_conv_percent.c \
+				ft_conv_integer.c \
 				ft_write_flags.c \
 				
 SRCS		= ${addprefix ${SRCDIR}, ${SRCNAME}}

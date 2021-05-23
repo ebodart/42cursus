@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 18:43:50 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/21 10:17:55 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/23 17:42:13 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_init_struct(t_int *print)
 	print->width = 0;
 	print->prec = 0;
 	print->error = 0;
+	print->type = 0; //0 = char, 1 = str, 2 = int, -2 = int neg
 }
 
 void	ft_putchar(char c, t_int *print)
@@ -39,6 +40,10 @@ void	ft_conversion(va_list ap, t_int *print, int i, const char *format)
 		ft_conv_char(ap, &(*print));
 	if (c == 's')
 		ft_conv_string(ap, &(*print));
+	if (c == '%')
+		ft_conv_percent(&(*print));
+	if (c == 'd' || c == 'i')
+		ft_conv_integer(ap, &(*print));
 }
 
 int	ft_printf(const char *format, ...)

@@ -6,21 +6,20 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:37:43 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/21 10:45:12 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/23 17:49:10 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_check_arg(va_list ap)
+char	*ft_check_arg_str(va_list ap, t_int *print)
 {
 	char	*str;
 
 	str = va_arg(ap, char *);
+	print->type = 1;
 	if (!str || str == 0)
-	{
-		str = "null";
-	}
+		str = "(null)";
 	return (str);
 }
 
@@ -48,7 +47,7 @@ void	ft_conv_string(va_list ap, t_int *print)
 {
 	char	*str;
 
-	str = ft_check_arg(ap);
+	str = ft_check_arg_str(ap, &(*print));
 	if (print->error != 0)
 		return ;
 	print->len = ft_strlen(str);

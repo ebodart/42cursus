@@ -14,6 +14,20 @@ if (c == 's')
 		ft_conv_percent(ap);
 
 
+int ft_intlen(int nbr)
+{
+    int len;
+
+    len = 0;
+    while (nbr > 0)
+    {
+        len += 1;
+        nbr = nbr / 10;
+    }
+    return (len);
+}
+
+
 void	ft_printer(t_format *index, const char *format)
 {
 	int start;
