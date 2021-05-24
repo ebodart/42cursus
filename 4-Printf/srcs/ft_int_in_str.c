@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_int_in_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 17:34:48 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/19 21:52:41 by ebodart          ###   ########.fr       */
+/*   Created: 2021/05/24 18:01:58 by ebodart           #+#    #+#             */
+/*   Updated: 2021/05/24 18:06:43 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static	int	ft_len_int(unsigned int pos, int len_int)
+int	ft_len_int(unsigned int n, int len_int)
 {
 	int	result;
 
-	while (pos >= 10)
+	while (n >= 10)
 	{
-		result = pos % 10;
-		pos = (pos - result) / 10;
+		result = n % 10;
+		n = (n - result) / 10;
 		len_int++;
 	}
 	len_int++;
 	return (len_int);
 }
 
-static char	*ft_intchar(unsigned int pos, int len_int, int signe)
+char	*ft_intchar(unsigned int n, int len_int, int signe)
 {
 	char	*str;
 	int		result;
@@ -36,17 +36,28 @@ static char	*ft_intchar(unsigned int pos, int len_int, int signe)
 		return (NULL);
 	str[len_int] = '\0';
 	len_int--;
-	while (pos >= 10)
+	while (n >= 10)
 	{
-		result = pos % 10;
-		pos = (pos - result) / 10;
+		result = n % 10;
+		n = (n - result) / 10;
 		str[len_int] = result + '0';
 		len_int--;
 	}
-	str[len_int] = pos + '0';
+	str[len_int] = n + '0';
 	if (signe == -1)
 		str[--len_int] = '-';
 	return (str);
+}
+
+char	*ft_unitoa(unsigned int n)
+{
+	int	len_int;
+	int	signe;
+
+	signe = 0;
+	len_int = 0;
+	len_int = ft_len_int(n, len_int);
+	return (ft_intchar(n, len_int, signe));
 }
 
 char	*ft_itoa(int n)

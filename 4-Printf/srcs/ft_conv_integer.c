@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:38:12 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/23 18:11:57 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 18:06:53 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_putnbr(char *str, t_int *print)
 		z--;
 	if (print->prec > 0 && print->len < print->prec)
 		l = print->prec - print->len;
+	if (print->error == 2)
+		z = 0;
 	while (l > 0)
 	{
 		ft_putchar('0', &(*print));
@@ -62,7 +64,7 @@ void	ft_conv_integer(va_list ap, t_int *print)
 	char	*str;
 
 	str = ft_check_arg_int(ap, &(*print));
-	if (print->error != 0)
+	if (print->error != 0 && print->error != 2)
 		return ;
 	print->len = ft_strlen(str);
 	if (print->minus > 0)

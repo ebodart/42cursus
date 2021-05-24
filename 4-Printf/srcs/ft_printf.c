@@ -6,12 +6,13 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 18:43:50 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/23 17:42:13 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 18:42:30 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+//type: 0 = char, 1 = str, 2 = int, -2 = int neg
 void	ft_init_struct(t_int *print)
 {
 	print->index = 0;
@@ -22,13 +23,23 @@ void	ft_init_struct(t_int *print)
 	print->width = 0;
 	print->prec = 0;
 	print->error = 0;
-	print->type = 0; //0 = char, 1 = str, 2 = int, -2 = int neg
+	print->type = 0;
 }
 
 void	ft_putchar(char c, t_int *print)
 {
 	write(1, &c, 1);
 	print->ret += 1;
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 void	ft_conversion(va_list ap, t_int *print, int i, const char *format)
@@ -44,6 +55,8 @@ void	ft_conversion(va_list ap, t_int *print, int i, const char *format)
 		ft_conv_percent(&(*print));
 	if (c == 'd' || c == 'i')
 		ft_conv_integer(ap, &(*print));
+	if (c == 'u')
+		ft_conv_uninteger(ap, &(*print));
 }
 
 int	ft_printf(const char *format, ...)
@@ -63,7 +76,7 @@ int	ft_printf(const char *format, ...)
 		{
 			print.index++;
 			ft_fill_print(&print, format, ap);
-			if (print.error != 0)
+			if (print.error != 0 && print.error != 2)
 				return (0);
 		}
 		print.index++;

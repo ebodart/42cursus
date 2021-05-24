@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 21:37:18 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/23 18:13:40 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/23 18:18:29 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_fill_prec(t_int *print, const char *format, int i, va_list ap)
 			w = va_arg(ap, int);
 			print->prec = w;
 			if (print->prec == 0)
-				print->prec = -1;
+				print->error = 2;
 			i++;
 		}
 		else
@@ -77,7 +77,7 @@ int	ft_fill_prec(t_int *print, const char *format, int i, va_list ap)
 				i++;
 			}
 			if (print->prec == 0)
-				print->prec = -1;
+				print->error = 2;
 		}
 	}
 	return (i);
@@ -101,4 +101,5 @@ void	ft_fill_print(t_int *print, const char *format, va_list ap)
 	print->prec = 0;
 	print->index = i;
 	print->type = 0;
+	print->error = 0;
 }
