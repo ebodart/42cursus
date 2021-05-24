@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:12:40 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 18:04:19 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 20:20:53 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,16 @@ char	*ft_intchar(unsigned int n, int len_int, int signe);
 int		ft_len_int(unsigned int n, int len_int);
 char	*ft_itoa(int n);
 
+char	*ft_int_in_hexa(unsigned int n, char *base);
+char	*ft_intchar_base(unsigned int n, int len_int, unsigned int len_base, char *base);
+int		ft_len_int_base(unsigned int n, int len_int, unsigned int len_base);
+
 char	*ft_check_arg_str(va_list ap, t_int *print);
 void	ft_putstr(char *str, t_int *print);
 void	ft_conv_string(va_list ap, t_int *print);
+
+char	*ft_check_arg_hexa(va_list ap, t_int *print);
+void	ft_conv_hexa(va_list ap, t_int *print);
 
 char	*ft_check_arg_int(va_list ap, t_int *print);
 void	ft_putnbr(char *str, t_int *print);

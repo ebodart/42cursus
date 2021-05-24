@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_uninteger.c                                :+:      :+:    :+:   */
+/*   ft_conv_hexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 16:12:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:08:34 by ebodart          ###   ########.fr       */
+/*   Created: 2021/05/24 21:03:41 by ebodart           #+#    #+#             */
+/*   Updated: 2021/05/24 21:03:43 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_check_arg_unint(va_list ap, t_int *print)
+char	*ft_check_arg_hexa(va_list ap, t_int *print)
 {
-	unsigned int		nbr;
+	int		nbr;
 	char	*str;
 
-	nbr = va_arg(ap, unsigned int);
-	print->type = 3;
+	nbr = va_arg(ap, int);
+	if (nbr < 0 && print->prec > 0 )
+		print->prec += 1;
 	if (print->zero > 0 && print->width > 0 && print->prec > 0)
 		print->zero = 0;
-	str = ft_unitoa(nbr);
+	if (print->type == 4)
+		str = ft_int_in_hexa(nbr, "0123456789abcdef");
+	else 
+		str = ft_int_in_hexa(nbr, "0123456789ABCDEF");
 	if (!str)
 		str = "(null)";
 	return (str);
 }
 
-void	ft_conv_uninteger(va_list ap, t_int *print)
+void	ft_conv_hexa(va_list ap, t_int *print)
 {
 	char	*str;
 
-	str = ft_check_arg_unint(ap, &(*print));
+	str = ft_check_arg_hexa(ap, &(*print));
 	if (print->error != 0 && print->error != 2)
 		return ;
 	print->len = ft_strlen(str);

@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:38:12 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 18:06:53 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 21:08:14 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_check_arg_int(va_list ap, t_int *print)
 	char	*str;
 
 	nbr = va_arg(ap, int);
-	print->type = 2;
+	print->type = 3;
 	if (nbr < 0)
-		print->type = -2;
+		print->type = -3;
 	if (nbr < 0 && print->prec > 0 )
 		print->prec += 1;
 	if (print->zero > 0 && print->width > 0 && print->prec > 0)
@@ -40,11 +40,11 @@ void	ft_putnbr(char *str, t_int *print)
 	i = 0;
 	l = 0;
 	z = print->len;
-	if (print->type == -2 && print->zero <= 0)
+	if (print->type == -3 && print->zero <= 0)
 		ft_putchar(str[i++], &(*print));
-	if (print->type == -2 && print->zero > 0)
+	if (print->type == -3 && print->zero > 0)
 		i++;
-	if (print->type == -2)
+	if (print->type == -3)
 		z--;
 	if (print->prec > 0 && print->len < print->prec)
 		l = print->prec - print->len;
