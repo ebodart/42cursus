@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_hexa.c                                     :+:      :+:    :+:   */
+/*   ft_conv_pointeur.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 21:03:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:27:51 by ebodart          ###   ########.fr       */
+/*   Created: 2021/05/24 18:12:36 by ebodart           #+#    #+#             */
+/*   Updated: 2021/05/24 22:29:04 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_check_arg_hexa(va_list ap, t_int *print)
+char	*ft_check_arg_ptr(va_list ap, t_int *print)
 {
-	int	unsigned	nbr;
-	char			*str;
+	unsigned long	nbr;
+	char *str;
 
-	nbr = va_arg(ap, unsigned int);
+	nbr = (unsigned long)va_arg(ap, void *);
+	print->type = 2;
 	if (print->zero > 0 && print->width > 0 && print->prec > 0)
 		print->zero = 0;
-	if (print->type == 4)
-		str = ft_int_in_hexa(nbr, "0123456789abcdef", &(*print));
+	if (!nbr)
+		str = "(nil)";
 	else
-		str = ft_int_in_hexa(nbr, "0123456789ABCDEF", &(*print));
+		str = ft_int_in_hexa(nbr, "0123456789abcdef", &(*print));
 	if (!str)
-		str = "(null)";
+		str = "(nil)";
 	return (str);
 }
 
-void	ft_conv_hexa(va_list ap, t_int *print)
+void	ft_conv_pointeur(va_list ap, t_int *print)
 {
 	char	*str;
 
-	str = ft_check_arg_hexa(ap, &(*print));
+	str = ft_check_arg_ptr(ap, &(*print));
 	if (print->error != 0 && print->error != 2)
 		return ;
 	print->len = ft_strlen(str);

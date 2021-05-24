@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:40:27 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:07:26 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 21:14:17 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_write_width(t_int *print)
 
 	w = print->len;
 	if (print->len < print->prec && print->prec > 0
-		&& (print->type >=3 || print->type == -3))
+		&& (print->type >= 3 || print->type == -3))
 		w = print->prec;
 	else if (print->len >= print->prec && print->prec > 0 && print->type == 1)
 		w = print->prec;

@@ -1,0 +1,274 @@
+Test  91 (s_prec_03_no_width_s_null) : FAILED.
+    First line of code: {return test("%.03s", NULL);}
+      expected output : ""
+      your output     : "(nu"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "(nu"
+
+Test 113 (s_prec_1_width_3_s_null) : FAILED.
+    First line of code: {return test("%3.1s", NULL);}
+      expected output : "   "
+      your output     : "  ("
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "  ("
+
+Test 114 (s_prec_1_width_9_s_null) : FAILED.
+    First line of code: {return test("%9.1s", NULL);}
+      expected output : "         "
+      your output     : "        ("
+      expected (nonprintable as hex) : "         "
+      actual   (nonprintable as hex) : "        ("
+
+Test 117 (s_prec_1_lj_width_3_s_null) : FAILED.
+    First line of code: {return test("%-3.1s", NULL);}
+      expected output : "   "
+      your output     : "(  "
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "(  "
+
+Test 118 (s_prec_1_lj_width_9_s_null) : FAILED.
+    First line of code: {return test("%-9.1s", NULL);}
+      expected output : "         "
+      your output     : "(        "
+      expected (nonprintable as hex) : "         "
+      actual   (nonprintable as hex) : "(        "
+
+Test 489 (new2019_negstar_1) : FAILED.
+    First line of code: {return test("%*s", -32, "abc");}
+      expected output : "abc                             "
+      your output     : "abc"
+      expected (nonprintable as hex) : "abc                             "
+      actual   (nonprintable as hex) : "abc"
+
+Test 490 (new2019_negstar_2) : FAILED.
+    First line of code: {return test("%-*s", -32, "abc");}
+      expected output : "abc                             "
+      your output     : "abc"
+      expected (nonprintable as hex) : "abc                             "
+      actual   (nonprintable as hex) : "abc"
+
+Test 492 (new2019_negstar_4) : FAILED.
+    First line of code: {return test("%.*s", -3, "hello");}
+      expected output : "hello"
+      your output     : ""
+      expected (nonprintable as hex) : "hello"
+      actual   (nonprintable as hex) : ""
+
+Test 493 (new2019_negstar_5) : FAILED.
+    First line of code: {return test("%-*.*s", -7, -3, "yolo");}
+      expected output : "yolo   "
+      your output     : ""
+      expected (nonprintable as hex) : "yolo   "
+      actual   (nonprintable as hex) : ""
+
+Test 495 (new2019_negstar_7) : FAILED.
+    First line of code: {return test("%*i", -14, 94827);}
+      expected output : "94827         "
+      your output     : "94827"
+      expected (nonprintable as hex) : "94827         "
+      actual   (nonprintable as hex) : "94827"
+
+Test 497 (new2019_negstar_9) : FAILED.
+    First line of code: {return test("%0*i", -7, -54);}
+      expected output : "-54    "
+      your output     : "-54"
+      expected (nonprintable as hex) : "-54    "
+      actual   (nonprintable as hex) : "-54"
+
+Test 647 (moul_star_2) : FAILED.
+    First line of code: {return test("%% *.5i 42 == |% *.5i|
+", 4, 42);}
+    Timed out
+
+Test 648 (moul_star_3) : FAILED.
+    First line of code: {return test("%%*i 42 == |%*i|
+", 5, 42);}
+      expected output : "%*i 42 == |   42|
+"
+      your output     : "%*i 42 == |   42|
+"
+      expected (nonprintable as hex) : "%*i 42 == |   42|\x0a"
+      actual   (nonprintable as hex) : "%*i 42 == |   42|\x0a"
+
+Test 649 (moul_star_4) : FAILED.
+    First line of code: {return test("%%*i 42 == |%*i|
+", 3, 42);}
+    Timed out
+
+Test 650 (moul_star_5) : FAILED.
+    First line of code: {return test("%%*i 42 == |%*i|
+", 2, 42);}
+    Timed out
+
+Test 651 (mix_test_0) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 652 (mix_test_1) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 653 (mix_test_2) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 654 (mix_test_3) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 655 (mix_test_4) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 656 (mix_test_5) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 657 (mix_test_6) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 658 (mix_test_7) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 659 (mix_test_8) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 660 (mix_test_9) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 661 (mix_test_10) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 662 (mix_test_11) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 663 (mix_test_12) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 664 (mix_test_13) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 665 (mix_test_14) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 666 (mix_test_15) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 667 (mix_test_16) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 668 (mix_test_17) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 669 (mix_test_18) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 670 (mix_test_19) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 671 (mix_test_20) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 672 (mix_test_21) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 673 (mix_test_22) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 674 (mix_test_23) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 675 (mix_test_24) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 676 (mix_test_25) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 677 (mix_test_26) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 678 (mix_test_27) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 679 (mix_test_28) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 680 (mix_test_29) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 681 (mix_test_30) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 682 (mix_test_31) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 683 (mix_test_32) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 684 (mix_test_33) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 685 (mix_test_34) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 686 (mix_test_35) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 687 (mix_test_36) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 688 (mix_test_37) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 689 (mix_test_38) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 690 (mix_test_39) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 691 (mix_test_40) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 692 (mix_test_41) : FAILED.
+    First line of code: {return test(
+    Timed out
+
+Test 693 (mix_test_42) : FAILED.
+    First line of code: {return test(
+    Timed out
+

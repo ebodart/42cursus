@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:51:13 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 20:09:56 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 21:52:17 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(void)
 	c = 'K';
 	str = "hello";
 
-	printf("|Mon return_test = %d\n", ft_printf("%2x", 94827));
-	printf("|Vrai return_test = %d\n", printf("%2x", 94827));
+	printf("|Mon return_test = %d\n", ft_printf("%p", &str));
+	printf("|Vrai return_test = %d\n", printf("%p", &str));
 	printf("00000000000\n");
 	printf("\n");
 }

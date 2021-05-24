@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:12:40 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 20:20:53 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 22:18:05 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ char	*ft_intchar(unsigned int n, int len_int, int signe);
 int		ft_len_int(unsigned int n, int len_int);
 char	*ft_itoa(int n);
 
-char	*ft_int_in_hexa(unsigned int n, char *base);
-char	*ft_intchar_base(unsigned int n, int len_int, unsigned int len_base, char *base);
-int		ft_len_int_base(unsigned int n, int len_int, unsigned int len_base);
+char	*ft_int_in_hexa(unsigned long n, char *base, t_int *print);
+char	*ft_intchar_base(unsigned long n, char *base, int len_int,
+							unsigned long len_base, t_int *print);
+int		ft_len_int_base(unsigned long n, int len_int, unsigned long len_base, t_int *print);
 
 char	*ft_check_arg_str(va_list ap, t_int *print);
 void	ft_putstr(char *str, t_int *print);
@@ -78,6 +79,9 @@ void	ft_conv_integer(va_list ap, t_int *print);
 
 char	*ft_check_arg_unint(va_list ap, t_int *print);
 void	ft_conv_uninteger(va_list ap, t_int *print);
+
+char	*ft_check_arg_ptr(va_list ap, t_int *print);
+void	ft_conv_pointeur(va_list ap, t_int *print);
 
 void	ft_init_struct(t_int *print);
 void	ft_putchar(char c, t_int *print);

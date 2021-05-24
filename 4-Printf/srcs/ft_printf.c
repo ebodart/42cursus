@@ -6,13 +6,14 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 18:43:50 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:09:33 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 22:15:17 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//type: 0 = char, 1 = str, 2 = pointeur, 3 = int, -3 = int neg, 4 = hexalow, 5 = hexaup
+//type: 0 = char, 1 = str, 2 = pointeur, 3 = int, -3 = int neg, 
+//4 = hexalow, 5 = hexaup
 void	ft_init_struct(t_int *print)
 {
 	print->index = 0;
@@ -64,6 +65,8 @@ void	ft_conversion(va_list ap, t_int *print, int i, const char *format)
 			print->type = 5;
 		ft_conv_hexa(ap, &(*print));
 	}
+	if (c == 'p')
+		ft_conv_pointeur(ap, &(*print));
 }
 
 int	ft_printf(const char *format, ...)

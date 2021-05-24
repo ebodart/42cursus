@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:12:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:08:34 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 21:11:59 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_check_arg_unint(va_list ap, t_int *print)
 {
 	unsigned int		nbr;
-	char	*str;
+	char				*str;
 
 	nbr = va_arg(ap, unsigned int);
 	print->type = 3;
