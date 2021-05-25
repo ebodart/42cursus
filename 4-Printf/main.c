@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:51:13 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:52:17 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:25:42 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,33 @@ int	main(void)
 	c = 'K';
 	str = "hello";
 
-	printf("|Mon return_test = %d\n", ft_printf("%p", &str));
-	printf("|Vrai return_test = %d\n", printf("%p", &str));
+	printf("|Mon return_test = %d\n", ft_printf("%-9.1s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%-9.1s", NULL));
 	printf("00000000000\n");
 	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%-3.1s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%-3.1s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%-3.8s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%-3.8s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%3.6s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%3.6s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%3.1s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%3.1s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%3.5s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%3.5s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+	printf("|Mon return_test = %d\n", ft_printf("%3.6s", NULL));
+	printf("|Vrai return_test = %d\n", printf("%3.6s", NULL));
+	printf("00000000000\n");
+	printf("\n");
+
 }

@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 21:37:18 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/23 18:18:29 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:10:34 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_fill_print(t_int *print, const char *format, va_list ap)
 	int	i;
 
 	i = print->index;
-	while (format[i] != 'c' && format[i] != 's' && format[i] != 'p'
+	if (format[i] != 'c' && format[i] != 's' && format[i] != 'p'
 		&& format[i] != 'd' && format[i] != 'i' && format[i] != 'u'
 		&& format[i] != 'x' && format[i] != 'X' && format[i] != '%')
 	{

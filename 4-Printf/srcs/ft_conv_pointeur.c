@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:12:36 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:29:04 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:35:13 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_check_arg_ptr(va_list ap, t_int *print)
 {
 	unsigned long	nbr;
-	char *str;
+	char			*str;
 
 	nbr = (unsigned long)va_arg(ap, void *);
 	print->type = 2;

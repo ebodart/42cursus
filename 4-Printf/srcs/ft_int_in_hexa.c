@@ -6,13 +6,14 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 19:08:26 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:17:48 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:44:16 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_len_int_base(unsigned long n, int len_int, unsigned long len_base, t_int *print)
+int	ft_len_int_base(unsigned long n, int len_int,
+					unsigned long len_base, t_int *print)
 {
 	int	result;
 
@@ -29,7 +30,7 @@ int	ft_len_int_base(unsigned long n, int len_int, unsigned long len_base, t_int 
 }
 
 char	*ft_intchar_base(unsigned long n, char *base, int len_int,
-							unsigned long len_base, t_int *print)
+							unsigned long len_base)
 {
 	char	*str;
 	int		result;
@@ -47,11 +48,6 @@ char	*ft_intchar_base(unsigned long n, char *base, int len_int,
 		len_int--;
 	}
 	str[len_int] = base[n];
-	if (print->type == 2)
-	{
-		str[1] = 'x';
-		str[0] = '0';
-	}
 	return (str);
 }
 
@@ -59,11 +55,18 @@ char	*ft_int_in_hexa(unsigned long n, char *base, t_int *print)
 {
 	int				len_int;
 	unsigned long	len_base;
+	char			*str;
 
 	len_base = 0;
 	while (base[len_base])
 		len_base++;
 	len_int = 0;
 	len_int = ft_len_int_base(n, len_int, len_base, &(*print));
-	return (ft_intchar_base(n, base, len_int, len_base, &(*print)));
+	str = ft_intchar_base(n, base, len_int, len_base);
+	if (print->type == 2)
+	{
+		str[1] = 'x';
+		str[0] = '0';
+	}
+	return (str);
 }

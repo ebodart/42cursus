@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:12:40 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:18:05 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:46:53 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ char	*ft_itoa(int n);
 
 char	*ft_int_in_hexa(unsigned long n, char *base, t_int *print);
 char	*ft_intchar_base(unsigned long n, char *base, int len_int,
-							unsigned long len_base, t_int *print);
-int		ft_len_int_base(unsigned long n, int len_int, unsigned long len_base, t_int *print);
+			unsigned long len_base);
+int		ft_len_int_base(unsigned long n, int len_int,
+			unsigned long len_base, t_int *print);
 
 char	*ft_check_arg_str(va_list ap, t_int *print);
 void	ft_putstr(char *str, t_int *print);

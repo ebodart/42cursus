@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:37:43 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/23 18:21:04 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:33:48 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,19 @@ char	*ft_check_arg_str(va_list ap, t_int *print)
 	print->type = 1;
 	if (print->error == 2)
 		print->prec = -1;
+	if (print->width < 0)
+	{
+		print->width *= -1;
+		print->minus = 1;
+	}
+	if (print->prec < 0)
+		print->prec = 0;
 	if (!str || str == 0)
-		str = "(null)";
+	{
+		str = "";
+		if (print->prec >= 6 || print->prec <= 0)
+			str = "(null)";
+	}
 	return (str);
 }
 
@@ -33,7 +44,7 @@ void	ft_putstr(char *str, t_int *print)
 	i = 0;
 	if (print->prec > 0 && print->len > print->prec)
 		l = print->prec;
-	else if (print->prec < 0)
+	else if (print->error == 2)
 		l = 0;
 	else
 		l = print->len;

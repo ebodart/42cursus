@@ -6,14 +6,14 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 18:43:50 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:15:17 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:09:04 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 //type: 0 = char, 1 = str, 2 = pointeur, 3 = int, -3 = int neg, 
-//4 = hexalow, 5 = hexaup
+//4 = hexalow, 5 = hexaup, 6 = pct
 void	ft_init_struct(t_int *print)
 {
 	print->index = 0;
@@ -79,12 +79,12 @@ int	ft_printf(const char *format, ...)
 	while (format[print.index] != '\0')
 	{
 		if (format[print.index] != '%')
-		{
 			ft_putchar(format[print.index], &print);
-		}
 		else
 		{
 			print.index++;
+			while (format[print.index] == ' ')
+				ft_putchar(format[print.index++], &print);
 			ft_fill_print(&print, format, ap);
 			if (print.error != 0 && print.error != 2)
 				return (0);

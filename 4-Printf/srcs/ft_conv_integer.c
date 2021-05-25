@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:38:12 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:08:14 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/24 23:28:03 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ char	*ft_check_arg_int(va_list ap, t_int *print)
 	if (nbr < 0 && print->prec > 0 )
 		print->prec += 1;
 	if (print->zero > 0 && print->width > 0 && print->prec > 0)
+		print->zero = 0;
+	if (print->width < 0)
+	{
+		print->width *= -1;
+		print->minus = 1;
+	}
+	if (print->zero > 0 && print->minus > 0)
 		print->zero = 0;
 	str = ft_itoa(nbr);
 	if (!str)

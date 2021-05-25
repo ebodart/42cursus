@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 21:03:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 22:27:51 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 19:45:38 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_check_arg_hexa(va_list ap, t_int *print)
 {
-	int	unsigned	nbr;
+	int unsigned	nbr;
 	char			*str;
 
 	nbr = va_arg(ap, unsigned int);
