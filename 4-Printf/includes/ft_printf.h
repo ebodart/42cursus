@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:12:40 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/25 19:46:53 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 21:05:30 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ typedef struct s_int
 
 void	ft_fill_print(t_int *print, const char *format, va_list ap);
 int		ft_fill_prec(t_int *print, const char *format, int i, va_list ap);
+int		ft_fill_star(t_int *print, int i, va_list ap, int width);
 int		ft_fill_width(t_int *print, const char *format, int i, va_list ap);
 int		ft_fill_zero_minus(t_int *print, const char *format, int i);
 
 void	ft_write_minus(t_int *print);
 void	ft_write_zero(t_int *print);
+void	ft_change_width(t_int *print);
 void	ft_write_width(t_int *print);
 
 void	ft_conv_char(va_list ap, t_int *print);

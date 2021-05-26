@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:12:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 21:11:59 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 20:56:02 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,23 @@ char	*ft_check_arg_unint(va_list ap, t_int *print)
 
 	nbr = va_arg(ap, unsigned int);
 	print->type = 3;
-	if (print->zero > 0 && print->width > 0 && print->prec > 0)
+	if (print->error == 6 || print->prec > 0 || print->error == 2
+		|| (print->zero > 0 && print->minus > 0))
 		print->zero = 0;
-	str = ft_unitoa(nbr);
-	if (!str)
-		str = "(null)";
+	if (print->width < 0)
+	{
+		print->width *= -1;
+		print->minus = 1;
+	}
+	if (nbr == 0 && (print->error == 2 || print->error == 9))
+	{
+		str = " ";
+		print->error = 5;
+		if (print->width > 0)
+			print->error = 7;
+	}
+	else
+		str = ft_unitoa(nbr);
 	return (str);
 }
 
@@ -32,7 +44,7 @@ void	ft_conv_uninteger(va_list ap, t_int *print)
 	char	*str;
 
 	str = ft_check_arg_unint(ap, &(*print));
-	if (print->error != 0 && print->error != 2)
+	if (print->error == 1)
 		return ;
 	print->len = ft_strlen(str);
 	if (print->minus > 0)

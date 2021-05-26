@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:12:36 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/25 19:35:13 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/25 20:41:10 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_conv_pointeur(va_list ap, t_int *print)
 	char	*str;
 
 	str = ft_check_arg_ptr(ap, &(*print));
-	if (print->error != 0 && print->error != 2)
+	if (print->error == 1)
 		return ;
 	print->len = ft_strlen(str);
 	if (print->minus > 0)

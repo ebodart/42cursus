@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:37:43 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/25 19:33:48 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 12:37:26 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ char	*ft_check_arg_str(va_list ap, t_int *print)
 		print->width *= -1;
 		print->minus = 1;
 	}
-	if (print->prec < 0)
-		print->prec = 0;
 	if (!str || str == 0)
 	{
 		str = "";
@@ -44,7 +42,7 @@ void	ft_putstr(char *str, t_int *print)
 	i = 0;
 	if (print->prec > 0 && print->len > print->prec)
 		l = print->prec;
-	else if (print->error == 2)
+	else if (print->error == 9 || print->error == 2)
 		l = 0;
 	else
 		l = print->len;
@@ -61,7 +59,7 @@ void	ft_conv_string(va_list ap, t_int *print)
 	char	*str;
 
 	str = ft_check_arg_str(ap, &(*print));
-	if (print->error != 0 && print->error != 2)
+	if (print->error == 1)
 		return ;
 	print->len = ft_strlen(str);
 	if (print->minus > 0)

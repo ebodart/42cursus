@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:40:27 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/24 23:18:43 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 21:05:03 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_write_minus(t_int *print)
 		w = print->prec;
 	else if (print->len >= print->prec && print->prec > 0 && print->type == 1)
 		w = print->prec;
-	else if (print->prec < 0 || print->error == 2)
+	else if ((print->error == 2 || print->error == 9) && print->type == 1)
 		w = 0;
 	w = print->width - w;
 	while (w > 0)
@@ -42,8 +42,6 @@ void	ft_write_zero(t_int *print)
 		ft_putchar('-', &(*print));
 	if (print->len >= print->prec && print->prec > 0)
 		w = print->prec;
-	else if (print->prec < 0 || print->error == 2)
-		w = 0;
 	w = print->width - w;
 	while (w > 0)
 	{
@@ -51,6 +49,12 @@ void	ft_write_zero(t_int *print)
 		w--;
 	}
 	print->width = 0;
+}
+
+void	ft_change_width(t_int *print)
+{
+	print->width *= -1;
+	print->minus = 1;
 }
 
 void	ft_write_width(t_int *print)
@@ -63,11 +67,11 @@ void	ft_write_width(t_int *print)
 		w = print->prec;
 	else if (print->len >= print->prec && print->prec > 0 && print->type == 1)
 		w = print->prec;
-	else if (print->prec < 0 || print->error == 2)
+	else if ((print->error == 9 || print->error == 2) && print->type == 1)
 		w = 0;
 	w = print->width - w;
-	if (print->width > 0 && print->type == -3 && print->prec <= 0)
-		print->ret += 1;
+	if (print->prec <= 0 && print->width < print->len && print->type >= 2)
+		w = 0;
 	while (w > 0)
 	{
 		ft_putchar(' ', &(*print));

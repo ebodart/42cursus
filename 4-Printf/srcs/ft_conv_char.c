@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 21:45:58 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/20 18:44:51 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 21:04:30 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_conv_char(va_list ap, t_int *print)
 
 	c = va_arg(ap, int);
 	print->len = 1;
+	if (print->width < 0)
+		ft_change_width(&(*print));
 	if (print->minus > 0)
 	{
 		ft_putchar(c, &(*print));

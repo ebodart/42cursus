@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 18:43:50 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/25 19:09:04 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/26 21:24:17 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,22 @@ void	ft_conversion(va_list ap, t_int *print, int i, const char *format)
 	c = format[i];
 	if (c == 'c')
 		ft_conv_char(ap, &(*print));
-	if (c == 's')
+	else if (c == 's')
 		ft_conv_string(ap, &(*print));
-	if (c == '%')
+	else if (c == '%')
 		ft_conv_percent(&(*print));
-	if (c == 'd' || c == 'i')
+	else if (c == 'd' || c == 'i')
 		ft_conv_integer(ap, &(*print));
-	if (c == 'u')
+	else if (c == 'u')
 		ft_conv_uninteger(ap, &(*print));
-	if (c == 'x' || c == 'X')
+	else if (c == 'x' || c == 'X')
 	{
 		print->type = 4;
 		if (c == 'X')
 			print->type = 5;
 		ft_conv_hexa(ap, &(*print));
 	}
-	if (c == 'p')
+	else if (c == 'p')
 		ft_conv_pointeur(ap, &(*print));
 }
 
@@ -86,7 +86,7 @@ int	ft_printf(const char *format, ...)
 			while (format[print.index] == ' ')
 				ft_putchar(format[print.index++], &print);
 			ft_fill_print(&print, format, ap);
-			if (print.error != 0 && print.error != 2)
+			if (print.error == 1)
 				return (0);
 		}
 		print.index++;
