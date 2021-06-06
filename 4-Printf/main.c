@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:51:13 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 19:29:53 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/06 21:59:12 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,32 @@ int	main(void)
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
-	printf("--- Return : %d\n", ft_printf("%-3.s", s_hidden));
-	printf("--- Return : %d\n", printf("%-3.s", s_hidden));
+	printf("--- Return : %d\n", ft_printf("%-3.s\n", s_hidden));
+	printf("--- Return : %d\n", printf("%-3.s\n", s_hidden));
+	//ft_printf("%*p%-135.109d\n" ,-15,(void*)15603137398285451084lu,1482420587);
+	//printf("stop\n");
+	//printf("%*p%-135.109d\n" ,-15,(void*)15603137398285451084lu,1482420587);
 	printf("00000000000\n");
 	printf("\n");
-	printf("--- Return : %d\n", ft_printf("%-8.s", s_hidden));
-	printf("--- Return : %d\n", printf("%-8.s", s_hidden));
-	printf("00000000000\n");
-	printf("\n");
-	printf("--- Return : %d\n", ft_printf("%-3.s", NULL));
-	printf("--- Return : %d\n", printf("%-3.s", NULL));
-	printf("00000000000\n");
-	printf("\n");
-	printf("--- Return : %d\n", ft_printf("%-8.s", NULL));
-	printf("--- Return : %d\n", printf("%-8.s", NULL));
-	printf("00000000000\n");
-	printf("\n");
+
+	//printf("--- Return : %d\n", ft_printf("%*p" ,-15,(void*)15603137398285451084lu));
+	//printf("--- Return : %d\n", printf("%*p" ,-15,(void*)15603137398285451084lu));
+	//printf("00000000000\n");
+	//printf("\n");
+	//printf("--- Return : %d\n", ft_printf("%*p%-135.109d" ,-15,(void*)15603137398285451084lu,1482420587));
+	//printf("--- Return : %d\n", printf("%*p%-135.109d" ,-15,(void*)15603137398285451084lu,1482420587));
+	//printf("00000000000\n");
+	//printf("\n");
+	//printf("--- Return : %d\n", ft_printf("%-8.s", s_hidden));
+	//printf("--- Return : %d\n", printf("%-8.s", s_hidden));
+	//printf("00000000000\n");
+	//printf("\n");
+	//printf("--- Return : %d\n", ft_printf("%-3.s", NULL));
+	//printf("--- Return : %d\n", printf("%-3.s", NULL));
+	//printf("00000000000\n");
+	//printf("\n");
+	//printf("--- Return : %d\n", ft_printf("%-8.s", NULL));
+	//printf("--- Return : %d\n", printf("%-8.s", NULL));
+	//printf("00000000000\n");
+	//printf("\n");
 }

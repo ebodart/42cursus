@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 21:37:18 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 20:50:39 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/06 21:46:20 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,6 @@ void	ft_fill_print(t_int *print, const char *format, va_list ap)
 	print->type = 0;
 	print->error = 0;
 	print->minus = 0;
+	print->width = 0;
+	print->zero = 0;
 }

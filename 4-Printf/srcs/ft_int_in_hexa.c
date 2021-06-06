@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 19:08:26 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/25 19:44:16 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/06 10:23:33 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ char	*ft_intchar_base(unsigned long n, char *base, int len_int,
 		n = n / len_base;
 		len_int--;
 	}
-	str[len_int] = base[n];
 	return (str);
 }
 

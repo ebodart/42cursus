@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:12:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 20:56:02 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/05 11:48:39 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_check_arg_unint(va_list ap, t_int *print)
 	}
 	if (nbr == 0 && (print->error == 2 || print->error == 9))
 	{
-		str = " ";
+		*(&str) = " ";
 		print->error = 5;
 		if (print->width > 0)
 			print->error = 7;
@@ -64,4 +64,6 @@ void	ft_conv_uninteger(va_list ap, t_int *print)
 	}
 	else
 		ft_putnbr(str, &(*print));
+	if (print->error != 5 && print->error != 7)
+		free(str);
 }

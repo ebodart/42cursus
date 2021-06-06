@@ -6,11 +6,21 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 21:03:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 21:04:08 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/06 22:05:56 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_check_zero_width(t_int *print)
+{
+	if ((print->zero > 0 && print->width > 0 && print->prec > 0)
+		|| print->error == 6 || print->prec > 0 || print->error == 2
+		|| (print->zero > 0 && print->minus > 0))
+		print->zero = 0;
+	if (print->width < 0)
+		ft_change_width(&(*print));
+}
 
 char	*ft_check_arg_hexa(va_list ap, t_int *print)
 {
@@ -18,18 +28,18 @@ char	*ft_check_arg_hexa(va_list ap, t_int *print)
 	char			*str;
 
 	nbr = va_arg(ap, unsigned int);
-	if ((print->zero > 0 && print->width > 0 && print->prec > 0)
-		|| print->error == 6 || print->prec > 0 || print->error == 2
-		|| (print->zero > 0 && print->minus > 0))
-		print->zero = 0;
-	if (print->width < 0)
-		ft_change_width(&(*print));
+	ft_check_zero_width(&(*print));
 	if (nbr == 0 && (print->error == 2 || print->error == 9))
 	{
 		str = " ";
 		print->error = 5;
 		if (print->width > 0)
 			print->error = 7;
+	}
+	else if (nbr == 0)
+	{
+		str = "0";
+		print->error = 11;
 	}
 	else
 	{
@@ -66,4 +76,6 @@ void	ft_conv_hexa(va_list ap, t_int *print)
 	}
 	else
 		ft_putnbr(str, &(*print));
+	if (print->error != 5 && print->error != 7 && print->error != 11)
+		free(str);
 }

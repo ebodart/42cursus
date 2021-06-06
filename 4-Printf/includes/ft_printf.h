@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 19:12:40 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 21:05:30 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/06 22:14:27 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
-
-typedef enum e_conv
-{
-	CHAR = 0,
-	STRING = 1,
-	POINTEUR = 2,
-	INT = 3,
-	UNINT = 4,
-	HEXALOW = 5,
-	HEXAUP = 6,
-	PERCENT = 7
-}	t_conv;
 
 typedef struct s_int
 {
@@ -73,6 +61,7 @@ char	*ft_check_arg_str(va_list ap, t_int *print);
 void	ft_putstr(char *str, t_int *print);
 void	ft_conv_string(va_list ap, t_int *print);
 
+void	ft_check_zero_width(t_int *print);
 char	*ft_check_arg_hexa(va_list ap, t_int *print);
 void	ft_conv_hexa(va_list ap, t_int *print);
 

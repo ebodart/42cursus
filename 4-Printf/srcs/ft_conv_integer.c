@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:38:12 by ebodart           #+#    #+#             */
-/*   Updated: 2021/05/26 21:13:14 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/06/05 11:41:27 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_check_arg_int(va_list ap, t_int *print)
 		print->zero = 0;
 	if (nbr == 0 && (print->error == 2 || print->error == 9))
 	{
-		str = " ";
+		*(&str) = " ";
 		print->error = 5;
 		if (print->width > 0)
 			print->error = 7;
@@ -93,4 +93,6 @@ void	ft_conv_integer(va_list ap, t_int *print)
 	}
 	else
 		ft_putnbr(str, &(*print));
+	if (print->error != 5 && print->error != 7)
+		free(str);
 }
