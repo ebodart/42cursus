@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:40:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 09:53:48 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/23 12:20:56 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ void	push_a(t_stack *stacks)
 	{
 		if (top_a > 0)
 		{
-			stacks->stack_a[top_a - 1] = stacks->stack_b[top_b];
-			stacks->stack_b[top_b] = 0;
+			stacks->st_a[top_a - 1] = stacks->st_b[top_b];
+			stacks->st_b[top_b] = 0;
 			stacks->top_a = top_a - 1;
 			stacks->top_b = top_b + 1;
 			stacks->size_a += 1;
 			stacks->size_b -= 1;
 		}
 	}
+	ft_putendl("pa");
 }
 
 void	push_b(t_stack *stacks)
@@ -44,12 +45,13 @@ void	push_b(t_stack *stacks)
 	{
 		if (top_b > 0)
 		{
-			stacks->stack_b[top_b - 1] = stacks->stack_a[top_a];
-			stacks->stack_a[top_a] = 0;
+			stacks->st_b[top_b - 1] = stacks->st_a[top_a];
+			stacks->st_a[top_a] = 0;
 			stacks->top_b = top_b - 1;
 			stacks->top_a = top_a + 1;
 			stacks->size_b += 1;
 			stacks->size_a -= 1;
 		}
 	}
+	ft_putendl("pb");
 }

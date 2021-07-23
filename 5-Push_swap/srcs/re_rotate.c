@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 09:25:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 09:51:40 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/23 12:21:26 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ void	re_rotate_a(t_stack *stacks)
 	int	i;
 
 	top_a = stacks->top_a;
-	i = stacks->size_total - 1;
-	tmp = stacks->stack_a[i];
+	i = stacks->size_tot - 1;
+	tmp = stacks->st_a[i];
 	while (i > top_a)
 	{
-		stacks->stack_a[i] = stacks->stack_a[i - 1];
+		stacks->st_a[i] = stacks->st_a[i - 1];
 		i--;
 	}
-	stacks->stack_a[i] = tmp;
+	stacks->st_a[i] = tmp;
+	ft_putendl("rra");
 }
 
 void	re_rotate_b(t_stack *stacks)
@@ -36,18 +37,41 @@ void	re_rotate_b(t_stack *stacks)
 	int	i;
 
 	top_b = stacks->top_b;
-	i = stacks->size_total - 1;
-	tmp = stacks->stack_b[i];
+	i = stacks->size_tot - 1;
+	tmp = stacks->st_b[i];
 	while (i > top_b)
 	{
-		stacks->stack_b[i] = stacks->stack_b[i - 1];
+		stacks->st_b[i] = stacks->st_b[i - 1];
 		i--;
 	}
-	stacks->stack_b[i] = tmp;
+	stacks->st_b[i] = tmp;
+	ft_putendl("rrb");
 }
 
 void	re_rotate(t_stack *stacks)
 {
-	re_rotate_a(&(*stacks));
-	re_rotate_b(&(*stacks));
+	int	tmp;
+	int	top_a;
+	int	top_b;
+	int	i;
+
+	top_a = stacks->top_a;
+	i = stacks->size_tot - 1;
+	tmp = stacks->st_a[i];
+	while (i > top_a)
+	{
+		stacks->st_a[i] = stacks->st_a[i - 1];
+		i--;
+	}
+	stacks->st_a[i] = tmp;
+	top_b = stacks->top_b;
+	i = stacks->size_tot - 1;
+	tmp = stacks->st_b[i];
+	while (i > top_b)
+	{
+		stacks->st_b[i] = stacks->st_b[i - 1];
+		i--;
+	}
+	stacks->st_b[i] = tmp;
+	ft_putendl("rrr");
 }

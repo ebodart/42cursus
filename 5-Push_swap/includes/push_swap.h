@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 18:13:45 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 10:01:15 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/23 13:57:31 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 typedef struct s_stack
 {
-	int	*stack_a;
-	int	*stack_b;
-	int	size_total;
+	int	*st_a;
+	int	*st_b;
+	int	size_tot;
 	int	size_a;
 	int	size_b;
 	int	top_a;
@@ -32,12 +32,20 @@ typedef struct s_stack
 
 int				main(int argc, char **argv);
 
+void			ft_printf(t_stack *stacks);
+void			ft_print_stack(t_stack *stacks);
+void			ft_printf_stacks_info(t_stack *stacks);
+
+void			ft_fill_stack(t_stack *stacks, char **argv, int argc);
+
 void			ft_free_exit_error(t_stack *stacks);
 void			ft_exit_error(void);
 void			ft_free_exit_success(t_stack *stacks);
 
-int				ft_atoi(const char *nptr);
+int				ft_atoi(const char *nptr, t_stack *stacks);
 void			*ft_calloc(size_t nmemb, size_t size);
+void			ft_putendl(char *s);
+
 
 void			swap_a(t_stack *stacks);
 void			swap_b(t_stack *stacks);
@@ -53,5 +61,7 @@ void			rotate(t_stack *stacks);
 void			re_rotate_a(t_stack *stacks);
 void			re_rotate_b(t_stack *stacks);
 void			re_rotate(t_stack *stacks);
+
+void	ft_small_algo(t_stack *stacks);
 
 #endif

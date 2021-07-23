@@ -6,11 +6,24 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:56:21 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 09:49:14 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/23 14:08:35 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_putendl(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (!(!s) && s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+}
 
 void	*ft_memset(void *s, int c, size_t n)
 {
@@ -38,11 +51,21 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (mem);
 }
 
-static int	ft_result(int i, const char *nptr, int j, int signe)
+static int	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
 {
 	unsigned long long	result;
+	int					j;
 
+	j = i;
 	result = 0;
+	if (nptr[j] >= '0' && nptr[j] <= '9')
+	{
+		while (nptr[j] >= '0' && nptr[j] <= '9')
+			j++;
+	}
+	else
+		ft_free_exit_error(&(*stacks));
+	j = j - i;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = (result * 10) + (nptr[i] - '0');
@@ -55,7 +78,7 @@ static int	ft_result(int i, const char *nptr, int j, int signe)
 	return ((int)result);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, t_stack *stacks)
 {
 	int	i;
 	int	signe;
@@ -72,10 +95,6 @@ int	ft_atoi(const char *nptr)
 		if (nptr[i++] == '-')
 			signe = -1;
 	}
-	j = i;
-	while (nptr[j] >= '0' && nptr[j] <= '9')
-		j++;
-	j = j - i;
-	result = ft_result(i, nptr, j, signe);
+	result = ft_result(i, nptr, signe, &(*stacks));
 	return ((result * signe));
 }

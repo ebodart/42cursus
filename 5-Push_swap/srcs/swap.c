@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:31:32 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 09:50:32 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/23 12:20:56 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	swap_a(t_stack *stacks)
 	top_a = stacks->top_a;
 	if (stacks->size_a > 1)
 	{
-		tmp = stacks->stack_a[top_a];
-		stacks->stack_a[top_a] = stacks->stack_a[top_a + 1];
-		stacks->stack_a[top_a + 1] = tmp;
+		tmp = stacks->st_a[top_a];
+		stacks->st_a[top_a] = stacks->st_a[top_a + 1];
+		stacks->st_a[top_a + 1] = tmp;
 	}
+	ft_putendl("sa");
 }
 
 void	swap_b(t_stack *stacks)
@@ -34,10 +35,11 @@ void	swap_b(t_stack *stacks)
 	top_b = stacks->top_b;
 	if (stacks->size_b > 1)
 	{
-		tmp = stacks->stack_b[top_b];
-		stacks->stack_b[top_b] = stacks->stack_b[top_b + 1];
-		stacks->stack_b[top_b + 1] = tmp;
+		tmp = stacks->st_b[top_b];
+		stacks->st_b[top_b] = stacks->st_b[top_b + 1];
+		stacks->st_b[top_b + 1] = tmp;
 	}
+	ft_putendl("sb");
 }
 
 void	swap_ab(t_stack *stacks)
@@ -46,14 +48,16 @@ void	swap_ab(t_stack *stacks)
 
 	if (stacks->size_a > 1)
 	{
-		tmp = stacks->stack_a[0];
-		stacks->stack_a[0] = stacks->stack_a[1];
-		stacks->stack_a[1] = tmp;
+		tmp = stacks->st_a[0];
+		stacks->st_a[0] = stacks->st_a[1];
+		stacks->st_a[1] = tmp;
 	}
 	if (stacks->size_b > 1)
 	{
-		tmp = stacks->stack_b[0];
-		stacks->stack_b[0] = stacks->stack_b[1];
-		stacks->stack_b[1] = tmp;
+		tmp = stacks->st_b[0];
+		stacks->st_b[0] = stacks->st_b[1];
+		stacks->st_b[1] = tmp;
 	}
+	ft_putendl("ss");
+
 }
