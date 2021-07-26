@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:40:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 12:20:56 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/26 17:55:07 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	push_a(t_stack *stacks)
 			stacks->size_b -= 1;
 		}
 	}
-	ft_putendl("pa");
+	ft_putendl("pa", STDOUT);
 }
 
 void	push_b(t_stack *stacks)
@@ -53,5 +53,5 @@ void	push_b(t_stack *stacks)
 			stacks->size_a -= 1;
 		}
 	}
-	ft_putendl("pb");
+	ft_putendl("pb", STDOUT);
 }

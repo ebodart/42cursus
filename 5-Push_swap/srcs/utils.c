@@ -6,23 +6,23 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:56:21 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 14:08:35 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/26 18:26:59 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_putendl(char *s)
+void	ft_putendl(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (!(!s) && s[i])
 	{
-		write(1, &s[i], 1);
+		write(fd, &s[i], 1);
 		i++;
 	}
-	write(1, "\n", 1);
+	write(fd, "\n", 1);
 }
 
 void	*ft_memset(void *s, int c, size_t n)

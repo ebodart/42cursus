@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:31:32 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/23 12:20:56 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/26 17:55:46 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	swap_a(t_stack *stacks)
 		stacks->st_a[top_a] = stacks->st_a[top_a + 1];
 		stacks->st_a[top_a + 1] = tmp;
 	}
-	ft_putendl("sa");
+	ft_putendl("sa", STDOUT);
 }
 
 void	swap_b(t_stack *stacks)
@@ -39,7 +39,7 @@ void	swap_b(t_stack *stacks)
 		stacks->st_b[top_b] = stacks->st_b[top_b + 1];
 		stacks->st_b[top_b + 1] = tmp;
 	}
-	ft_putendl("sb");
+	ft_putendl("sb", STDOUT);
 }
 
 void	swap_ab(t_stack *stacks)
@@ -58,6 +58,5 @@ void	swap_ab(t_stack *stacks)
 		stacks->st_b[0] = stacks->st_b[1];
 		stacks->st_b[1] = tmp;
 	}
-	ft_putendl("ss");
-
+	ft_putendl("ss", STDOUT);
 }

@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 18:40:29 by ebodart           #+#    #+#              #
-#    Updated: 2021/07/23 13:57:42 by ebodart          ###   ########.fr        #
+#    Updated: 2021/07/26 16:51:54 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRCNAME		= push_swap.c \
 				printf.c \
 				fill_stack.c \
 				small_algorithm.c \
+				position.c \
+				big_algorithm.c \
 				
 				
 SRCS		= ${addprefix ${SRCDIR}, ${SRCNAME}}
