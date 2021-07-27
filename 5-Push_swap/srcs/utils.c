@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:56:21 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/26 18:26:59 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/27 11:20:47 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (mem);
 }
 
-static int	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
+long	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
 {
 	unsigned long long	result;
 	int					j;
@@ -69,21 +69,21 @@ static int	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = (result * 10) + (nptr[i] - '0');
-		if ((result >= LONG_MAX || j > 19) && signe == 1)
+		if (result > (unsigned long long)LONG_MAX && signe == 1)
 			return (-1);
-		else if ((result >= LONG_MAX || j > 19) && signe == -1)
+		else if (result > (unsigned long long)LONG_MAX + 1 && signe == -1)
 			return (0);
 		i++;
 	}
-	return ((int)result);
+	return (result);
 }
 
-int	ft_atoi(const char *nptr, t_stack *stacks)
+long	ft_atoi(const char *nptr, t_stack *stacks)
 {
-	int	i;
-	int	signe;
-	int	j;
-	int	result;
+	int					i;
+	int					signe;
+	int					j;
+	unsigned long long	result;
 
 	i = 0;
 	while (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n'

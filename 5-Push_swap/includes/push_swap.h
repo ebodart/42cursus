@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 18:13:45 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/26 17:58:10 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/07/27 11:26:11 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-
-# define LONG_MAX 	9223372036854775807
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -43,10 +42,9 @@ void			ft_free_exit_error(t_stack *stacks);
 void			ft_exit_error(void);
 void			ft_free_exit_success(t_stack *stacks);
 
-int				ft_atoi(const char *nptr, t_stack *stacks);
+long			ft_atoi(const char *nptr, t_stack *stacks);
 void			*ft_calloc(size_t nmemb, size_t size);
 void			ft_putendl(char *s, int fd);
-
 
 void			swap_a(t_stack *stacks);
 void			swap_b(t_stack *stacks);
@@ -65,7 +63,7 @@ void			re_rotate(t_stack *stacks);
 
 void			ft_small_algo(t_stack *stacks);
 
-void   			ft_big_algo(t_stack *stacks);
+void			ft_big_algo(t_stack *stacks);
 
 int				ft_first_a(t_stack *stacks);
 int				ft_first_b(t_stack *stacks);
