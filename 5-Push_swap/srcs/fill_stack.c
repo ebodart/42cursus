@@ -6,11 +6,24 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 10:07:15 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/27 11:21:37 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/09 22:53:29 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_check_sorted(t_stack *stacks)
+{
+	int	i;
+
+	i = 0;
+	while (stacks->st_a[i] < stacks->st_a[i + 1])
+	{
+		i++;
+		if (i == stacks->size_tot - 1)
+			ft_free_exit_success(&(*stacks));
+	}
+}
 
 void	ft_neg_in_pos(t_stack *stacks, int first_a)
 {
@@ -44,12 +57,17 @@ void	ft_check_duplicate(t_stack *stacks, int s, int value)
 
 void	ft_fill_size_top(t_stack *stacks, int argc)
 {
+	int		first_a;
+
 	stacks->size_tot = argc - 1;
 	stacks->size_a = argc - 1;
 	stacks->size_b = 0;
 	stacks->top_a = 0;
 	stacks->top_b = argc - 1;
 	ft_check_sorted(&(*stacks));
+	first_a = ft_first_a(&(*stacks));
+	if (stacks->st_a[first_a] < 0)
+		ft_neg_in_pos(&(*stacks), first_a);
 }
 
 //top = dernier index où il y a un chiffre en haut de la stack
@@ -57,8 +75,7 @@ void	ft_fill_stack(t_stack *stacks, char **argv, int argc)
 {
 	int		i;
 	int		s;
-	long	value;
-	int		first_a;
+	int		value;
 
 	stacks->st_a = malloc(sizeof(int) * argc);
 	stacks->st_b = ft_calloc(argc, sizeof(int));
@@ -69,15 +86,10 @@ void	ft_fill_stack(t_stack *stacks, char **argv, int argc)
 	while (i < argc)
 	{
 		value = ft_atoi(argv[i], &(*stacks));
-		if (value > INT_MAX || value < INT_MIN)
-			ft_free_exit_error(&(*stacks));
 		ft_check_duplicate(&(*stacks), s, value);
 		stacks->st_a[s] = (int)value;
 		i++;
 		s++;
 	}
 	ft_fill_size_top(&(*stacks), argc);
-	first_a = ft_first_a(&(*stacks));
-	if (stacks->st_a[first_a] < 0)
-		ft_neg_in_pos(&(*stacks), first_a);
 }

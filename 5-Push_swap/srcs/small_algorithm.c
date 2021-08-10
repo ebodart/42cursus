@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 12:16:57 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/25 18:20:34 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/07 11:55:13 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ void	ft_three_digits(t_stack *stacks)
 
 	first_a = ft_first_a(&(*stacks));
 	if (stacks->st_a[first_a] == stacks->st_a[stacks->top_a])
-		swap_a(&(*stacks));
+		swap_a(&(*stacks), 1);
 	last_a = ft_last_a(&(*stacks));
 	if (stacks->st_a[last_a] == stacks->st_a[stacks->top_a])
-		rotate_a(&(*stacks));
+		rotate_a(&(*stacks), 1);
 	ft_check_sorted(&(*stacks));
 	last_a = ft_last_a(&(*stacks));
 	first_a = ft_first_a(&(*stacks));
 	if (stacks->st_a[last_a] == stacks->st_a[stacks->top_a + 2]
 		&& stacks->st_a[first_a] == stacks->st_a[stacks->top_a + 1])
-		swap_a(&(*stacks));
+		swap_a(&(*stacks), 1);
 	first_a = ft_first_a(&(*stacks));
 	if (stacks->st_a[first_a] == stacks->st_a[stacks->top_a + 2])
-		re_rotate_a(&(*stacks));
+		re_rotate_a(&(*stacks), 1);
 	ft_check_sorted(&(*stacks));
 }
 
@@ -40,25 +40,25 @@ void	ft_second_top(t_stack *stacks, int first_a, int second_a, int last_a)
 {
 	if (stacks->st_a[first_a] == stacks->st_a[stacks->size_tot - 1]
 		|| (stacks->st_a[second_a] == stacks->st_a[stacks->size_tot - 1]))
-		re_rotate_a(&(*stacks));
+		re_rotate_a(&(*stacks), 1);
 	else if (stacks->st_a[first_a] == stacks->st_a[stacks->top_a + 1]
 		|| (stacks->st_a[second_a] == stacks->st_a[stacks->top_a + 1]))
 	{
 		last_a = ft_last_a(&(*stacks));
 		if (stacks->st_a[last_a] == stacks->st_a[stacks->top_a])
-			rotate_a(&(*stacks));
+			rotate_a(&(*stacks), 1);
 		else
-			swap_a(&(*stacks));
+			swap_a(&(*stacks), 1);
 	}
 	else if (stacks->st_a[first_a] == stacks->st_a[stacks->size_tot - 2]
 		|| (stacks->st_a[second_a] == stacks->st_a[stacks->size_tot - 2]))
 	{
-		rotate_a(&(*stacks));
+		rotate_a(&(*stacks), 1);
 		last_a = ft_last_a(&(*stacks));
 		if (stacks->st_a[last_a] == stacks->st_a[stacks->top_a])
-			rotate_a(&(*stacks));
+			rotate_a(&(*stacks), 1);
 		else
-			swap_a(&(*stacks));
+			swap_a(&(*stacks), 1);
 	}
 }
 
@@ -69,15 +69,15 @@ void	ft_first_top(t_stack *stacks, int first_a, int second_a)
 
 	first_a = ft_first_a(&(*stacks));
 	second_a = ft_second_a(&(*stacks), first_a);
-	push_b(&(*stacks));
+	push_b(&(*stacks), 1);
 	ft_second_top(&(*stacks), first_a, second_a, last_a);
-	push_b(&(*stacks));
+	push_b(&(*stacks), 1);
 	ft_three_digits(&(*stacks));
 	first_b = ft_first_b(&(*stacks));
 	if (stacks->st_b[first_b] == stacks->st_b[stacks->top_b])
-		swap_b(&(*stacks));
-	push_a(&(*stacks));
-	push_a(&(*stacks));
+		swap_b(&(*stacks), 1);
+	push_a(&(*stacks), 1);
+	push_a(&(*stacks), 1);
 	ft_free_exit_success(&(*stacks));
 }
 
@@ -95,15 +95,15 @@ void	ft_five_digits(t_stack *stacks)
 	{
 		if (stacks->st_a[first_a] == stacks->st_a[stacks->size_tot - 1]
 			|| stacks->st_a[second_a] == stacks->st_a[stacks->size_tot - 1])
-			re_rotate_a(&(*stacks));
+			re_rotate_a(&(*stacks), 1);
 		else
 		{
-			rotate_a(&(*stacks));
+			rotate_a(&(*stacks), 1);
 			first_a = ft_first_a(&(*stacks));
 			second_a = ft_second_a(&(*stacks), first_a);
 			if (stacks->st_a[first_a] != stacks->st_a[stacks->top_a]
 				&& stacks->st_a[second_a] != stacks->st_a[stacks->top_a])
-				rotate_a(&(*stacks));
+				rotate_a(&(*stacks), 1);
 		}
 	}
 	ft_first_top(&(*stacks), first_a, second_a);

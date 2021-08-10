@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 10:09:05 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/25 18:24:25 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/07 12:13:03 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,34 @@ void	ft_printf(t_stack *stacks)
 {
 	ft_printf_st_ab(&(*stacks));
 	ft_printf_stacks_info(&(*stacks));
-	swap_a(&(*stacks));
+	//swap_a(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_b(&(*stacks));
+	//push_b(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_b(&(*stacks));
+	//push_b(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_b(&(*stacks));
+	//push_b(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
 	//rotate_a(&(*stacks));
 	//ft_print_st_ab(&(*stacks));
 	//rotate_b(&(*stacks));
 	//ft_print_st_ab(&(*stacks));
-	rotate(&(*stacks));
-	ft_printf_st_ab(&(*stacks));
+	//rotate(&(*stacks));
+	//ft_printf_st_ab(&(*stacks));
 	//re_rotate_a(&(*stacks));
 	//ft_print_st_ab(&(*stacks));
 	//re_rotate_b(&(*stacks));
 	//ft_print_st_ab(&(*stacks));
 	//ft_printf_stacks_info(&(*stacks));
-	re_rotate(&(*stacks));
+	//re_rotate(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
 	ft_printf_stacks_info(&(*stacks));
-	swap_a(&(*stacks));
+	//swap_a(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_a(&(*stacks));
+	//push_a(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_a(&(*stacks));
+	//push_a(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
-	push_a(&(*stacks));
+	//push_a(&(*stacks));
 	ft_printf_st_ab(&(*stacks));
 }

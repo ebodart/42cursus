@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 18:40:29 by ebodart           #+#    #+#              #
-#    Updated: 2021/07/26 16:51:54 by ebodart          ###   ########.fr        #
+#    Updated: 2021/08/07 12:19:30 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,35 @@ SRCNAME		= push_swap.c \
 				small_algorithm.c \
 				position.c \
 				big_algorithm.c \
+
+SRCNAMECHK		= checker.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+				exit.c \
+				swap.c \
+				push.c \
+				rotate.c \
+				re_rotate.c \
+				fill_stack.c \
+				utils.c \
+				position.c \
+
+				
 				
 				
 SRCS		= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
+SRCSCHK		= ${addprefix ${SRCDIR}, ${SRCNAMECHK}}
+
 OBJS		= ${SRCS:.c=.o}
+
+OBJSCHK		= ${SRCSCHK:.c=.o}
 
 INCLUDES	= -I includes
 
 NAME		= push_swap
+
+CHK			= checker
 
 all:		${NAME}
 
@@ -47,12 +67,17 @@ all:		${NAME}
 ${NAME}:	${OBJS}
 			$(CC) ${CFLAGS} ${INCLUDES} -o $@ $^
 
+$(CHK): $(OBJSCHK)
+		$(CC) ${CFLAGS} ${INCLUDES} -o $@ $^
+
+bonus: $(CHK)
+
 clean:
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(OBJSCHK)
 
 fclean:		clean
-			rm -f $(NAME)
+			rm -f $(NAME) $(CHK)
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus

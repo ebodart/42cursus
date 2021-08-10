@@ -6,13 +6,13 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 09:25:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/26 17:55:23 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/07 11:50:27 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	re_rotate_a(t_stack *stacks)
+void	re_rotate_a(t_stack *stacks, int write)
 {
 	int	tmp;
 	int	top_a;
@@ -27,10 +27,11 @@ void	re_rotate_a(t_stack *stacks)
 		i--;
 	}
 	stacks->st_a[i] = tmp;
-	ft_putendl("rra", STDOUT);
+	if (write == 1)
+		ft_putendl("rra", STDOUT);
 }
 
-void	re_rotate_b(t_stack *stacks)
+void	re_rotate_b(t_stack *stacks, int write)
 {
 	int	tmp;
 	int	top_b;
@@ -45,10 +46,11 @@ void	re_rotate_b(t_stack *stacks)
 		i--;
 	}
 	stacks->st_b[i] = tmp;
-	ft_putendl("rrb", STDOUT);
+	if (write == 1)
+		ft_putendl("rrb", STDOUT);
 }
 
-void	re_rotate(t_stack *stacks)
+void	re_rotate(t_stack *stacks, int write)
 {
 	int	tmp;
 	int	top_a;
@@ -73,5 +75,6 @@ void	re_rotate(t_stack *stacks)
 		i--;
 	}
 	stacks->st_b[i] = tmp;
-	ft_putendl("rrr", STDOUT);
+	if (write == 1)
+		ft_putendl("rrr", STDOUT);
 }

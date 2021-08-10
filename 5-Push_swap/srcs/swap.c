@@ -6,13 +6,13 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:31:32 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/26 17:55:46 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/07 11:52:03 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_a(t_stack *stacks)
+void	swap_a(t_stack *stacks, int write)
 {
 	int	tmp;
 	int	top_a;
@@ -24,10 +24,11 @@ void	swap_a(t_stack *stacks)
 		stacks->st_a[top_a] = stacks->st_a[top_a + 1];
 		stacks->st_a[top_a + 1] = tmp;
 	}
-	ft_putendl("sa", STDOUT);
+	if (write == 1)
+		ft_putendl("sa", STDOUT);
 }
 
-void	swap_b(t_stack *stacks)
+void	swap_b(t_stack *stacks, int write)
 {
 	int	tmp;
 	int	top_b;
@@ -39,10 +40,11 @@ void	swap_b(t_stack *stacks)
 		stacks->st_b[top_b] = stacks->st_b[top_b + 1];
 		stacks->st_b[top_b + 1] = tmp;
 	}
-	ft_putendl("sb", STDOUT);
+	if (write == 1)
+		ft_putendl("sb", STDOUT);
 }
 
-void	swap_ab(t_stack *stacks)
+void	swap_ab(t_stack *stacks, int write)
 {
 	int	tmp;
 
@@ -58,5 +60,6 @@ void	swap_ab(t_stack *stacks)
 		stacks->st_b[0] = stacks->st_b[1];
 		stacks->st_b[1] = tmp;
 	}
-	ft_putendl("ss", STDOUT);
+	if (write == 1)
+		ft_putendl("ss", STDOUT);
 }
