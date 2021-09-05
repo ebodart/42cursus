@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:56:21 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/15 11:51:04 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/09/05 22:42:08 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,26 @@ long	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
 		while (nptr[j] >= '0' && nptr[j] <= '9')
 			j++;
 		if ((nptr[j] < '0' || nptr[j] > '9') && (nptr[j] != '\0'))
+		{
+			free((void *)nptr);
 			ft_free_exit_error(&(*stacks));
+		}
 	}
 	else
+	{
+		free((void *)nptr);
 		ft_free_exit_error(&(*stacks));
+	}
 	j = j - i;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = (result * 10) + (nptr[i] - '0');
 		if ((signe == 1 && result > INT_MAX)
 			|| (signe == -1 && - result < INT_MIN))
+		{
+			free((void *)nptr);
 			ft_free_exit_error(&(*stacks));
+		}
 		i++;
 	}
 	return (result);
