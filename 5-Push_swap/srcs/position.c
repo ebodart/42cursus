@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 18:03:47 by ebodart           #+#    #+#             */
-/*   Updated: 2021/07/25 18:05:51 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/09/05 19:07:17 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,20 @@ int	ft_last_a(t_stack *stacks)
 		i++;
 	}
 	return (last_a);
+}
+
+int	ft_last_b(t_stack *stacks)
+{
+	int	i;
+	int	last_b;
+
+	last_b = stacks->top_b;
+	i = last_b + 1;
+	while (i < stacks->size_tot)
+	{
+		if (stacks->st_b[i] > stacks->st_b[last_b])
+			last_b = i;
+		i++;
+	}
+	return (last_b);
 }

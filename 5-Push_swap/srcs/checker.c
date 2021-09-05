@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 18:42:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/10 22:33:52 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/09/05 20:24:37 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ void	ft_OK_or_KO(t_stack *stacks)
 	int	i;
 
 	i = 0;
+	if (stacks->size_tot == 1)
+	{
+		if (stacks->size_b == 0)
+			ft_free_exit_OK(&(*stacks));
+		else
+			ft_free_exit_KO(&(*stacks));
+	}
 	while (stacks->st_a[i] < stacks->st_a[i + 1])
 	{
 		i++;
@@ -75,26 +82,23 @@ int	main(int argc, char **argv)
 	t_stack	stacks;
 	char	*line;
 	int		ret;
+	int		index;
 
+	if (argc < 2)
+		return (1);
+	stacks.checker = 1;
+	ft_fill_stack(&stacks, argv, argc, index);
 	ret = get_next_line(STDIN, &line);
-	if (argc == 2)
-		exit(EXIT_SUCCESS);
-	else if (argc > 1)
+	while (ret > 0)
 	{
-		ft_fill_stack(&stacks, argv, argc);
-		while (ret > 0)
-		{
-			ft_operations(line, &stacks);
-			free(line);
-			ret = get_next_line(STDIN, &line);
-		}
+		ft_operations(line, &stacks);
 		free(line);
-		if (ret < 0)
-			ft_free_exit_error(&stacks);
-		ft_OK_or_KO(&stacks);
+		ret = get_next_line(STDIN, &line);
 	}
-	else
-		exit(EXIT_SUCCESS);
+	free(line);
+	if (ret < 0)
+		ft_free_exit_error(&stacks);
+	ft_OK_or_KO(&stacks);
 	ft_free_exit_success(&stacks);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 18:13:45 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/09 22:48:55 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/09/05 22:19:00 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@ typedef struct s_stack
 	int	size_b;
 	int	top_a;
 	int	top_b;
+	int	checker;
 }				t_stack;
 
 void			ft_check_sorted(t_stack *stacks);
+void			ft_check_duplicate(t_stack *stacks, int s, int value);
 
-void			ft_printf(t_stack *stacks);
-void			ft_printf_st_ab(t_stack *stacks);
-void			ft_printf_stacks_info(t_stack *stacks);
+void			ft_calloc_args(t_stack *stacks, int argc, char **argv);
+int				ft_args_in_int(int start, int end, char *argv, t_stack *stacks);
 
-void			ft_fill_stack(t_stack *stacks, char **argv, int argc);
+char			**ft_split(char const *s, char c);
+
+void			ft_fill_stack(t_stack *stacks, char **argv,
+					int argc, int index);
+size_t			ft_strlen(const char *s);
+void			ft_fill_size_top(t_stack *stacks, int nbr_args);
 
 void			ft_free_exit_error(t_stack *stacks);
 void			ft_exit_error(void);
@@ -70,6 +76,18 @@ int				ft_first_a(t_stack *stacks);
 int				ft_first_b(t_stack *stacks);
 int				ft_second_a(t_stack *stacks, int first_a);
 int				ft_last_a(t_stack *stacks);
+int				ft_last_b(t_stack *stacks);
+
+int				ft_previous_b(t_stack *stacks, int nbr);
+int				ft_bottom_chunk(t_stack *stacks, int nbr_chu, int max);
+int				ft_top_chunk(t_stack *stacks, int nbr_chu, int max);
+
+void			ft_nbr_suite(t_stack *stacks, int first_a);
+
+void			ft_chunk_algo(t_stack *stacks, int nbr_of_chunks);
+
+void			ft_printf(t_stack *stacks);
+void			ft_printf_st_ab(t_stack *stacks);
 
 /*
 ** Checker
@@ -84,7 +102,7 @@ char			*join_keep_line(char *tmp, char *line, int i);
 int				get_next_line(int fd, char **line);
 
 void			init_keep(char *keep, int i);
-size_t			ft_strlen(const char *s);
+int				ret_read_start(char *keep, int fd, char **line);
 
 # define STDIN 0
 # define STDOUT 1

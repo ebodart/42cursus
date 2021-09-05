@@ -6,11 +6,42 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:41:46 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/10 22:34:20 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/12 18:21:09 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+** Sert à lire une ligne de la taille du buffer
+*/
+
+int	read_line(char *keep, int fd)
+{
+	int	ret_read;
+	int	i;
+
+	i = 0;
+	ret_read = read(fd, keep, BUFFER_SIZE);
+	if (ret_read == -1)
+		return (-1);
+	else if (ret_read == 0)
+	{
+		keep[0] = -1;
+		return (0);
+	}
+	else
+	{
+		keep[ret_read] = '\0';
+		while (keep[i])
+		{
+			if (keep[i] == '\n')
+				return (1);
+			i++;
+		}
+		return (2);
+	}
+}
 
 /*
 ** Fonction qui sert à remplir line par ce qu'on a trouvé dans keep
@@ -48,8 +79,8 @@ int	fill_line(char **line, int size, char *keep, int ret_read)
 
 int	size_line(char **line, char *keep, int ret_read)
 {
-	int			i;
-	int			size;
+	int	i;
+	int	size;
 
 	i = 0;
 	size = BUFFER_SIZE;
@@ -105,27 +136,17 @@ char	*join_keep_line(char *tmp, char *line, int i)
 	return (new_line);
 }
 
-int	ret_read_start(char *keep, int fd, char **line)
-{
-	int	ret_read;
-
-	ret_read = read_line(keep, fd);
-	if (*keep)
-		ret_read = size_line(line, keep, 1);
-	else if (ret_read >= 0)
-		ret_read = size_line(line, keep, ret_read);
-	return (ret_read);
-}
-
 int	get_next_line(int fd, char **line)
 {
 	static char	keep[BUFFER_SIZE + 1];
 	int			ret_read;
 	char		*tmp;
+	int			i;
 
-	*line = NULL;
+	i = 0;
 	if (!line || BUFFER_SIZE < 1 || fd < 0)
 		return (-1);
+	*line = NULL;
 	ret_read = ret_read_start(keep, fd, line);
 	while (ret_read > 1)
 	{
@@ -134,7 +155,7 @@ int	get_next_line(int fd, char **line)
 		{
 			tmp = *line;
 			size_line(line, keep, ret_read);
-			*line = join_keep_line(tmp, *line, 0);
+			*line = join_keep_line(tmp, *line, i);
 			if (!(*line))
 				return (-1);
 		}

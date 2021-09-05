@@ -6,21 +6,11 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:22:44 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/10 22:24:17 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/08/15 10:39:43 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 /*
 ** Sert à remettre ce qui suit le /n au début de la variable static
@@ -53,33 +43,17 @@ void	init_keep(char *keep, int i)
 	}
 }
 
-/*
-** Sert à lire une ligne de la taille du buffer
-*/
-
-int	read_line(char *keep, int fd)
+int	ret_read_start(char *keep, int fd, char **line)
 {
 	int	ret_read;
-	int	i;
 
-	i = 0;
-	ret_read = read(fd, keep, BUFFER_SIZE);
-	if (ret_read == -1)
-		return (-1);
-	else if (ret_read == 0)
-	{
-		keep[0] = -1;
-		return (0);
-	}
+	if (*keep)
+		ret_read = size_line(line, keep, 1);
 	else
 	{
-		keep[ret_read] = '\0';
-		while (keep[i])
-		{
-			if (keep[i] == '\n')
-				return (1);
-			i++;
-		}
-		return (2);
+		ret_read = read_line(keep, fd);
+		if (ret_read >= 0)
+			ret_read = size_line(line, keep, ret_read);
 	}
+	return (ret_read);
 }
