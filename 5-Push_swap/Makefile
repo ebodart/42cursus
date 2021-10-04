@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 18:40:29 by ebodart           #+#    #+#              #
-#    Updated: 2021/09/05 20:01:47 by ebodart          ###   ########.fr        #
+#    Updated: 2021/10/04 09:48:15 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCDIR		= ./srcs/
 SRCNAME		= push_swap.c \
 				deal_with_args.c \
 				split.c \
+				putendl.c \
 				utils.c \
 				check_stack.c \
 				exit.c \
@@ -37,6 +38,7 @@ SRCNAME		= push_swap.c \
 SRCNAMECHK		= checker.c \
 				deal_with_args.c \
 				split.c \
+				putendl.c \
 				check_stack.c \
 				get_next_line.c \
 				get_next_line_utils.c \
@@ -50,13 +52,13 @@ SRCNAMECHK		= checker.c \
 				nbr_suite.c \
 				position.c \
 		
-SRCS		= ${addprefix ${SRCDIR}, ${SRCNAME}}
+SRCS		= $(addprefix $(SRCDIR), $(SRCNAME))
 
-SRCSCHK		= ${addprefix ${SRCDIR}, ${SRCNAMECHK}}
+SRCSCHK		= $(addprefix $(SRCDIR), $(SRCNAMECHK))
 
-OBJS		= ${SRCS:.c=.o}
+OBJS		= $(SRCS:.c=.o)
 
-OBJSCHK		= ${SRCSCHK:.c=.o}
+OBJSCHK		= $(SRCSCHK:.c=.o)
 
 INCLUDES	= -I includes
 
@@ -64,17 +66,17 @@ NAME		= push_swap
 
 CHK			= checker
 
-all:		${NAME}
+all:		$(NAME)
 
 %.o: 		%.c
-			$(CC) -o $@ -c $<
+			$(CC) $(CFLAGS) -o $@ -c $<
 			
 
-${NAME}:	${OBJS}
-			$(CC) ${CFLAGS} ${INCLUDES} -o $@ $^
+$(NAME):	$(OBJS)
+			$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
 
 $(CHK): $(OBJSCHK)
-		$(CC) ${CFLAGS} ${INCLUDES} -o $@ $^
+		$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
 
 bonus: $(CHK)
 

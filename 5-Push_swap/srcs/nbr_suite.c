@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 11:24:19 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/29 11:41:49 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/02 17:22:12 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_smallest_index(int i, int j, t_stack *stacks)
 {
-	int	tmp;
-	int	index;
+	long int	tmp;
+	int			index;
 
 	while (j < stacks->size_tot)
 	{

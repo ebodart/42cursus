@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 18:42:09 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 20:24:37 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/04 09:50:13 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (ordre);
 }
 
-void	ft_OK_or_KO(t_stack *stacks)
+void	ft_ok_or_ko(t_stack *stacks)
 {
 	int	i;
 
@@ -36,17 +36,19 @@ void	ft_OK_or_KO(t_stack *stacks)
 	if (stacks->size_tot == 1)
 	{
 		if (stacks->size_b == 0)
-			ft_free_exit_OK(&(*stacks));
+			ft_free_exit_ok(&(*stacks));
 		else
-			ft_free_exit_KO(&(*stacks));
+			ft_free_exit_ko(&(*stacks));
 	}
 	while (stacks->st_a[i] < stacks->st_a[i + 1])
 	{
 		i++;
 		if (i == stacks->size_tot - 1 && stacks->size_b == 0)
-			ft_free_exit_OK(&(*stacks));
+		{
+			ft_free_exit_ok(&(*stacks));
+		}
 	}
-	ft_free_exit_KO(&(*stacks));
+	ft_free_exit_ko(&(*stacks));
 }
 
 void	ft_operations(char *line, t_stack *stacks)
@@ -74,7 +76,18 @@ void	ft_operations(char *line, t_stack *stacks)
 	else if (ft_strcmp(line, "rrr") == 0)
 		re_rotate(&(*stacks), 0);
 	else
-		ft_free_exit_error(&(*stacks));
+		ft_free_line_exit_error(&(*stacks), line);
+}
+
+void	ft_fill_args(t_stack *stacks, int argc, char **argv)
+{
+	int	index;
+
+	index = 0;
+	stacks->checker = 1;
+	ft_calloc_args(*(&stacks), argc, argv);
+	ft_fill_stack(*(&stacks), argv, argc, index);
+	return ;
 }
 
 int	main(int argc, char **argv)
@@ -82,12 +95,10 @@ int	main(int argc, char **argv)
 	t_stack	stacks;
 	char	*line;
 	int		ret;
-	int		index;
 
 	if (argc < 2)
 		return (1);
-	stacks.checker = 1;
-	ft_fill_stack(&stacks, argv, argc, index);
+	ft_fill_args(&stacks, argc, argv);
 	ret = get_next_line(STDIN, &line);
 	while (ret > 0)
 	{
@@ -95,10 +106,15 @@ int	main(int argc, char **argv)
 		free(line);
 		ret = get_next_line(STDIN, &line);
 	}
+	if (!(line[0] == '\0'))
+	{
+		free(line);
+		ft_free_exit_error(&stacks);
+	}
 	free(line);
 	if (ret < 0)
 		ft_free_exit_error(&stacks);
-	ft_OK_or_KO(&stacks);
+	ft_ok_or_ko(&stacks);
 	ft_free_exit_success(&stacks);
 	return (0);
 }

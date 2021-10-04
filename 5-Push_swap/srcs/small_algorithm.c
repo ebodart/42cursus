@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 12:16:57 by ebodart           #+#    #+#             */
-/*   Updated: 2021/08/07 11:55:13 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/03 18:45:29 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_three_digits(t_stack *stacks)
 {
 	int	first_a;
-	int	second_a;
 	int	last_a;
 
 	first_a = ft_first_a(&(*stacks));
@@ -67,6 +66,7 @@ void	ft_first_top(t_stack *stacks, int first_a, int second_a)
 	int	first_b;
 	int	last_a;
 
+	last_a = 0;
 	first_a = ft_first_a(&(*stacks));
 	second_a = ft_second_a(&(*stacks), first_a);
 	push_b(&(*stacks), 1);
@@ -111,10 +111,6 @@ void	ft_five_digits(t_stack *stacks)
 
 void	ft_small_algo(t_stack *stacks)
 {
-	int	first_a;
-	int	second_a;
-	int	last_a;
-
 	if (stacks->size_tot <= 3)
 		ft_three_digits(&(*stacks));
 	else

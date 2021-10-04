@@ -6,24 +6,11 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:56:21 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 22:42:08 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/03 18:44:07 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	ft_putendl(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	while (!(!s) && s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-	write(fd, "\n", 1);
-}
 
 void	*ft_memset(void *s, int c, size_t n)
 {
@@ -51,13 +38,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (mem);
 }
 
-long	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
+int	ft_check_number(int j, const char *nptr, t_stack *stacks)
 {
-	long	result;
-	int		j;
-
-	j = i;
-	result = 0;
 	if (nptr[j] >= '0' && nptr[j] <= '9')
 	{
 		while (nptr[j] >= '0' && nptr[j] <= '9')
@@ -73,6 +55,17 @@ long	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
 		free((void *)nptr);
 		ft_free_exit_error(&(*stacks));
 	}
+	return (j);
+}
+
+long	ft_result(int i, const char *nptr, int signe, t_stack *stacks)
+{
+	long	result;
+	int		j;
+
+	j = i;
+	result = 0;
+	j = ft_check_number(j, nptr, &(*stacks));
 	j = j - i;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
@@ -92,7 +85,6 @@ long	ft_atoi(const char *nptr, t_stack *stacks)
 {
 	int		i;
 	int		signe;
-	int		j;
 	long	result;
 
 	i = 0;

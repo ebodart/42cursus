@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 19:06:41 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 19:07:27 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/03 18:45:52 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_top_chunk(t_stack *stacks, int nbr_chu, int max)
 {
 	int	min_ch;
 	int	max_ch;
-	int	st;
 	int	i;
 
 	i = stacks->top_a;

@@ -6,19 +6,14 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 11:45:51 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 19:07:04 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/03 19:07:08 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_ra_or_rra(int top, int bottom, int max, t_stack *stacks)
+void	ft_ra_or_rra(int top, int bottom, t_stack *stacks)
 {
-	int	top_a;
-	int	size;
-	int	a;
-	int	b;
-
 	if (top - stacks->top_a <= stacks->size_tot - bottom)
 	{
 		while (top > stacks->top_a)
@@ -66,7 +61,6 @@ void	ft_order_b(t_stack *stacks)
 
 void	ft_push_back(t_stack *stacks)
 {
-	int	i;
 	int	first;
 
 	first = ft_first_b(*(&stacks));
@@ -83,12 +77,8 @@ void	ft_push_back(t_stack *stacks)
 				re_rotate_b(&(*stacks), 1);
 		}
 	}
-	i = stacks->size_b;
 	while (stacks->size_b > 0)
-	{
-		i = stacks->size_b;
 		push_a(*(&stacks), 1);
-	}	
 }
 
 void	ft_chunk_algo(t_stack *stacks, int max_chunks)
@@ -106,7 +96,7 @@ void	ft_chunk_algo(t_stack *stacks, int max_chunks)
 			nbr_chu++;
 		else
 		{
-			ft_ra_or_rra(top, bottom, max_chunks, *(&stacks));
+			ft_ra_or_rra(top, bottom, *(&stacks));
 			ft_order_b(*(&stacks));
 			push_b(*(&stacks), 1);
 		}

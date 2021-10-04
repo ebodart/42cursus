@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 18:13:45 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 22:19:00 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/04 09:51:31 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 
 typedef struct s_stack
 {
-	int	*st_a;
-	int	*st_b;
-	int	size_tot;
-	int	size_a;
-	int	size_b;
-	int	top_a;
-	int	top_b;
-	int	checker;
+	long int	*st_a;
+	long int	*st_b;
+	int			size_tot;
+	int			size_a;
+	int			size_b;
+	int			top_a;
+	int			top_b;
+	int			checker;
 }				t_stack;
 
 void			ft_check_sorted(t_stack *stacks);
@@ -35,6 +35,8 @@ void			ft_check_duplicate(t_stack *stacks, int s, int value);
 
 void			ft_calloc_args(t_stack *stacks, int argc, char **argv);
 int				ft_args_in_int(int start, int end, char *argv, t_stack *stacks);
+int				ft_args_in_stack(char **argv, t_stack *stacks,
+					int index, int i);
 
 char			**ft_split(char const *s, char c);
 
@@ -44,10 +46,10 @@ size_t			ft_strlen(const char *s);
 void			ft_fill_size_top(t_stack *stacks, int nbr_args);
 
 void			ft_free_exit_error(t_stack *stacks);
-void			ft_exit_error(void);
+void			ft_free_line_exit_error(t_stack *stacks, char *line);
 void			ft_free_exit_success(t_stack *stacks);
-void			ft_free_exit_OK(t_stack *stacks);
-void			ft_free_exit_KO(t_stack *stacks);
+void			ft_free_exit_ok(t_stack *stacks);
+void			ft_free_exit_ko(t_stack *stacks);
 
 long			ft_atoi(const char *nptr, t_stack *stacks);
 void			*ft_calloc(size_t nmemb, size_t size);

@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 10:07:15 by ebodart           #+#    #+#             */
-/*   Updated: 2021/09/05 22:21:00 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/02 17:21:43 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ size_t	ft_strlen(const char *s)
 
 void	ft_neg_in_pos(t_stack *stacks, int first_a)
 {
-	int	i;
-	int	first;
+	int			i;
+	long int	first;
 
 	i = 0;
 	first = stacks->st_a[first_a];
@@ -70,26 +70,11 @@ void	ft_free_args(char **tab)
 void	ft_fill_stack(t_stack *stacks, char **argv, int argc, int index)
 {
 	int		i;
-	int		value;
-	char	**args;
-	int		a;
-	int		start;
 
 	i = 1;
 	while (i < argc)
 	{
-		a = 0;
-		while (argv[i][a])
-		{
-			while (argv[i][a] == ' ' && argv[i][a] != '\0')
-				a++;
-			start = a;
-			while (argv[i][a] != ' ' && argv[i][a] != '\0')
-				a++;
-			value = ft_args_in_int(start, a, argv[i], &(*stacks));
-			ft_check_duplicate(&(*stacks), index, value);
-			stacks->st_a[index++] = (int)value;
-		}
+		index = ft_args_in_stack(argv, &(*stacks), index, i);
 		i++;
 		if (i == argc)
 			ft_fill_size_top(&(*stacks), index + 1);
