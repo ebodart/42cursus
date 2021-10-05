@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:18:15 by ebodart           #+#    #+#             */
-/*   Updated: 2020/11/27 22:18:08 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:30:43 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list *lst;
+	t_list	*lst;
 
 	if (!alst || !new)
 		return ;

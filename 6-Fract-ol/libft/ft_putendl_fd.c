@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:21:12 by ebodart           #+#    #+#             */
-/*   Updated: 2020/11/25 21:46:17 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:32:05 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (!(!s) && s[i])

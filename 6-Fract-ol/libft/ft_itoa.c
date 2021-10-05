@@ -6,15 +6,15 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 17:34:48 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/03 23:53:39 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 21:52:41 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_len_int(unsigned int pos, int len_int)
+static	int	ft_len_int(unsigned int pos, int len_int)
 {
-	int result;
+	int	result;
 
 	while (pos >= 10)
 	{
@@ -26,12 +26,13 @@ static	int		ft_len_int(unsigned int pos, int len_int)
 	return (len_int);
 }
 
-static char		*ft_intchar(unsigned int pos, int len_int, int signe)
+static char	*ft_intchar(unsigned int pos, int len_int, int signe)
 {
 	char	*str;
 	int		result;
 
-	if (!(str = malloc(sizeof(char) * (len_int + 1))))
+	str = malloc(sizeof(char) * (len_int + 1));
+	if (!str)
 		return (NULL);
 	str[len_int] = '\0';
 	len_int--;
@@ -48,7 +49,7 @@ static char		*ft_intchar(unsigned int pos, int len_int, int signe)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int				signe;
 	int				len_int;
@@ -59,7 +60,7 @@ char			*ft_itoa(int n)
 	if (n < 0)
 	{
 		signe = -1;
-		pos = (unsigned int)-n;
+		pos = (unsigned int) -n;
 		len_int++;
 	}
 	else

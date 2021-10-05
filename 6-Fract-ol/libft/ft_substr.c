@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:41:29 by ebodart           #+#    #+#             */
-/*   Updated: 2020/11/24 22:35:52 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 21:48:36 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	else if (len + start > s_len)
 		len = (s_len - start);
-	if (!(new = malloc(sizeof(char) * (len + 1))))
+	new = malloc(sizeof(char) * (len + 1));
+	if (!new)
 		return (NULL);
 	if (start < s_len)
 	{
 		while (i < len)
 		{
-			new[i] = s[start];
-			i++;
+			new[i++] = s[start];
 			start++;
 		}
 	}

@@ -6,13 +6,13 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 17:55:35 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/03 18:45:16 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 21:54:24 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		free_tab(char **tab, int i)
+static int	free_tab(char **tab, int i)
 {
 	i--;
 	while (i >= 0)
@@ -24,7 +24,7 @@ static int		free_tab(char **tab, int i)
 	return (0);
 }
 
-static int		ft_putmot(char const *s, char c, size_t nbr_mots, char **tab)
+static int	ft_putmot(char const *s, char c, size_t nbr_mots, char **tab)
 {
 	size_t			i_mot;
 	size_t			len;
@@ -39,7 +39,8 @@ static int		ft_putmot(char const *s, char c, size_t nbr_mots, char **tab)
 		len = start;
 		while (s[len + 1] != c && s[len + 1] != '\0')
 			len++;
-		if (!(tab[i_mot] = ft_substr(s, start, (len - start + 1))))
+		tab[i_mot] = ft_substr(s, start, (len - start + 1));
+		if (!tab[i_mot])
 			return (free_tab(tab, i_mot));
 		start = len + 1;
 		i_mot++;
@@ -50,8 +51,8 @@ static int		ft_putmot(char const *s, char c, size_t nbr_mots, char **tab)
 
 static size_t	ft_nbr_mots(char const *s, char c)
 {
-	size_t i;
-	size_t count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -74,7 +75,7 @@ static size_t	ft_nbr_mots(char const *s, char c)
 	return (count);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	size_t	nbr_mots;
@@ -82,7 +83,8 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	nbr_mots = ft_nbr_mots(s, c);
-	if (!(tab = malloc(sizeof(char*) * (nbr_mots + 1))))
+	tab = malloc(sizeof(char *) * (nbr_mots + 1));
+	if (!tab)
 		return (NULL);
 	if (!(ft_putmot(s, c, nbr_mots, tab)))
 		return (NULL);

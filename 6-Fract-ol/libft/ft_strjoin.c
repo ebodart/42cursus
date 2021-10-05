@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 22:03:53 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/03 23:45:42 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 21:50:55 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i_2 = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
 		return (NULL);
 	while (s1[i_1])
 	{

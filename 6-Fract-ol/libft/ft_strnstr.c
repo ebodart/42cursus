@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:16:07 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/12 19:54:37 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:35:03 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		while (big[b + l] == little[l] && b + l < len && little[l])
 			l++;
 		if (!little[l])
-			return ((char*)&big[b]);
+			return ((char *)&big[b]);
 		b++;
 	}
 	return (NULL);

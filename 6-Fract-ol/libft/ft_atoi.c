@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:21:08 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/08 09:30:09 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/10/05 14:04:33 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	ft_result(int i, const char *nptr, int j, int signe)
 	return ((int)result);
 }
 
-int			ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	signe;
 	int	j;
-	int result;
+	int	result;
 
 	i = 0;
 	while (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n'

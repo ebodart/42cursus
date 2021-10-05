@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 22:31:16 by ebodart           #+#    #+#             */
-/*   Updated: 2020/11/24 16:00:20 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:24:31 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_fin(char const *s1, char const *set)
 	return (fin);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char			*new;
 	unsigned int	start;

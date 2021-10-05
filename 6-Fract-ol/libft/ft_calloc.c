@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:46:28 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/02 14:24:56 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 21:49:53 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *mem;
+	void	*mem;
 
-	if (!(mem = malloc(size * nmemb)))
+	mem = malloc(size * nmemb);
+	if (!mem)
 		return (NULL);
 	ft_memset(mem, 0, (size * nmemb));
 	return (mem);

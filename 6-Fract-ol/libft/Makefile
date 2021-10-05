@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 21:13:42 by ebodart           #+#    #+#              #
-#    Updated: 2021/07/24 22:28:52 by ebodart          ###   ########.fr        #
+#    Updated: 2021/10/05 14:18:55 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,12 +49,13 @@ SRCS		= ft_strlen.c \
 				ft_putchar_fd.c \
 				ft_putendl_fd.c \
 				ft_putnbr_fd.c \
-				ft_putstr_fd.c
+				ft_putstr_fd.c \
+				ft_strcmp.c \
 
 BONUS		= ft_lstnew.c \
 				ft_lstadd_front.c \
 				ft_lstsize.c \
-				ft_lstlast_a.c \
+				ft_lstlast.c \
 				ft_lstadd_back.c \
 				ft_lstdelone.c \
 				ft_lstclear.c \

@@ -6,7 +6,7 @@
 /*   By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:58:54 by ebodart           #+#    #+#             */
-/*   Updated: 2020/12/03 23:18:29 by ebodart          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:35:39 by ebodart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
-	int z;
+	int	i;
+	int	z;
 
 	i = 0;
 	while (s[i])
