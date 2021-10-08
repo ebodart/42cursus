@@ -6,7 +6,7 @@
 #    By: ebodart <ebodart@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 15:40:58 by ebodart           #+#    #+#              #
-#    Updated: 2021/10/04 21:23:16 by ebodart          ###   ########.fr        #
+#    Updated: 2021/10/05 10:18:06 by ebodart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SERVER_NAME	= server
 CLIENT_NAME = client
 
 				
-all:		libft_comp server client
+all:		$(NAME)
+
+$(NAME):	libft_comp server client
 			
 libft_comp:	
 			$(LIBFT)
